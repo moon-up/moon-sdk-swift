@@ -14,16 +14,16 @@ public struct AccountControllerResponseData: Codable, JSONEncodable, Hashable {
 
     public var nonce: Double
     public var balance: String
-    public var transactionHash: String?
-    public var signedTransaction: String?
-    public var rawTransaction: String?
-    public var data: String
-    public var transactions: [TransactionData]?
-    public var moonScanUrl: String?
-    public var signature: String?
-    public var transaction: Tx?
-    public var userOps: [TransactionRequest]?
     public var useropTransaction: String?
+    public var userOps: [TransactionRequest]?
+    public var transaction: Tx?
+    public var signature: String?
+    public var moonScanUrl: String?
+    public var transactions: [TransactionData]?
+    public var data: String
+    public var rawTransaction: String?
+    public var signedTransaction: String?
+    public var transactionHash: String?
     public var keys: [String]?
     public var address: String
     public var name: String?
@@ -71,19 +71,19 @@ public struct AccountControllerResponseData: Codable, JSONEncodable, Hashable {
     public var tokenUri: String?
     public var isApprovedForAll: String?
 
-    public init(nonce: Double, balance: String, transactionHash: String? = nil, signedTransaction: String? = nil, rawTransaction: String? = nil, data: String, transactions: [TransactionData]? = nil, moonScanUrl: String? = nil, signature: String? = nil, transaction: Tx? = nil, userOps: [TransactionRequest]? = nil, useropTransaction: String? = nil, keys: [String]? = nil, address: String, name: String? = nil, encoding: String? = nil, header: Bool? = nil, signtype: Bool? = nil, domain: String, currentAtokenBalance: String, currentBorrowBalance: String, principalBorrowBalance: String, borrowRateMode: String, borrowRate: String, liquidityRate: String, originationFee: String, variableBorrowIndex: String, lastUpdateTimestamp: String, usageAsCollateralEnabled: String, type: Double? = nil, chainId: Double? = nil, gas: String? = nil, gasPrice: String? = nil, gasTipCap: String? = nil, gasFeeCap: String? = nil, value: String? = nil, from: String? = nil, to: String? = nil, blobGas: String? = nil, blobGasFeeCap: String? = nil, blobHashes: [String]? = nil, v: String? = nil, r: String? = nil, s: String? = nil, symbol: String? = nil, decimals: String? = nil, totalSupply: String? = nil, contractAddress: String? = nil, balanceOf: String? = nil, allowance: String? = nil, balanceOf: String? = nil, balanceOfBatch: String? = nil, success: Bool, message: String, signedTx: String? = nil, ownerOf: String? = nil, tokenUri: String? = nil, isApprovedForAll: String? = nil) {
+    public init(nonce: Double, balance: String, useropTransaction: String? = nil, userOps: [TransactionRequest]? = nil, transaction: Tx? = nil, signature: String? = nil, moonScanUrl: String? = nil, transactions: [TransactionData]? = nil, data: String, rawTransaction: String? = nil, signedTransaction: String? = nil, transactionHash: String? = nil, keys: [String]? = nil, address: String, name: String? = nil, encoding: String? = nil, header: Bool? = nil, signtype: Bool? = nil, domain: String, currentAtokenBalance: String, currentBorrowBalance: String, principalBorrowBalance: String, borrowRateMode: String, borrowRate: String, liquidityRate: String, originationFee: String, variableBorrowIndex: String, lastUpdateTimestamp: String, usageAsCollateralEnabled: String, type: Double? = nil, chainId: Double? = nil, gas: String? = nil, gasPrice: String? = nil, gasTipCap: String? = nil, gasFeeCap: String? = nil, value: String? = nil, from: String? = nil, to: String? = nil, blobGas: String? = nil, blobGasFeeCap: String? = nil, blobHashes: [String]? = nil, v: String? = nil, r: String? = nil, s: String? = nil, symbol: String? = nil, decimals: String? = nil, totalSupply: String? = nil, contractAddress: String? = nil, balanceOf: String? = nil, allowance: String? = nil, balanceOf: String? = nil, balanceOfBatch: String? = nil, success: Bool, message: String, signedTx: String? = nil, ownerOf: String? = nil, tokenUri: String? = nil, isApprovedForAll: String? = nil) {
         self.nonce = nonce
         self.balance = balance
-        self.transactionHash = transactionHash
-        self.signedTransaction = signedTransaction
-        self.rawTransaction = rawTransaction
-        self.data = data
-        self.transactions = transactions
-        self.moonScanUrl = moonScanUrl
-        self.signature = signature
-        self.transaction = transaction
-        self.userOps = userOps
         self.useropTransaction = useropTransaction
+        self.userOps = userOps
+        self.transaction = transaction
+        self.signature = signature
+        self.moonScanUrl = moonScanUrl
+        self.transactions = transactions
+        self.data = data
+        self.rawTransaction = rawTransaction
+        self.signedTransaction = signedTransaction
+        self.transactionHash = transactionHash
         self.keys = keys
         self.address = address
         self.name = name
@@ -135,16 +135,16 @@ public struct AccountControllerResponseData: Codable, JSONEncodable, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case nonce
         case balance
-        case transactionHash = "transaction_hash"
-        case signedTransaction = "signed_transaction"
-        case rawTransaction = "raw_transaction"
-        case data
-        case transactions
-        case moonScanUrl = "moon_scan_url"
-        case signature
-        case transaction
-        case userOps
         case useropTransaction = "userop_transaction"
+        case userOps
+        case transaction
+        case signature
+        case moonScanUrl = "moon_scan_url"
+        case transactions
+        case data
+        case rawTransaction = "raw_transaction"
+        case signedTransaction = "signed_transaction"
+        case transactionHash = "transaction_hash"
         case keys
         case address
         case name
@@ -199,16 +199,16 @@ public struct AccountControllerResponseData: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(nonce, forKey: .nonce)
         try container.encode(balance, forKey: .balance)
-        try container.encodeIfPresent(transactionHash, forKey: .transactionHash)
-        try container.encodeIfPresent(signedTransaction, forKey: .signedTransaction)
-        try container.encodeIfPresent(rawTransaction, forKey: .rawTransaction)
-        try container.encode(data, forKey: .data)
-        try container.encodeIfPresent(transactions, forKey: .transactions)
-        try container.encodeIfPresent(moonScanUrl, forKey: .moonScanUrl)
-        try container.encodeIfPresent(signature, forKey: .signature)
-        try container.encodeIfPresent(transaction, forKey: .transaction)
-        try container.encodeIfPresent(userOps, forKey: .userOps)
         try container.encodeIfPresent(useropTransaction, forKey: .useropTransaction)
+        try container.encodeIfPresent(userOps, forKey: .userOps)
+        try container.encodeIfPresent(transaction, forKey: .transaction)
+        try container.encodeIfPresent(signature, forKey: .signature)
+        try container.encodeIfPresent(moonScanUrl, forKey: .moonScanUrl)
+        try container.encodeIfPresent(transactions, forKey: .transactions)
+        try container.encode(data, forKey: .data)
+        try container.encodeIfPresent(rawTransaction, forKey: .rawTransaction)
+        try container.encodeIfPresent(signedTransaction, forKey: .signedTransaction)
+        try container.encodeIfPresent(transactionHash, forKey: .transactionHash)
         try container.encodeIfPresent(keys, forKey: .keys)
         try container.encode(address, forKey: .address)
         try container.encodeIfPresent(name, forKey: .name)

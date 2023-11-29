@@ -5,16 +5,16 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **nonce** | **Double** |  | 
 **balance** | **String** |  | 
-**transactionHash** | **String** |  | [optional] 
-**signedTransaction** | **String** |  | [optional] 
-**rawTransaction** | **String** |  | [optional] 
-**data** | **String** |  | 
-**transactions** | [TransactionData] |  | [optional] 
-**moonScanUrl** | **String** |  | [optional] 
-**signature** | **String** |  | [optional] 
-**transaction** | [**Tx**](Tx.md) |  | [optional] 
-**userOps** | [TransactionRequest] |  | [optional] 
 **useropTransaction** | **String** |  | [optional] 
+**userOps** | [TransactionRequest] |  | [optional] 
+**transaction** | [**Tx**](Tx.md) |  | [optional] 
+**signature** | **String** |  | [optional] 
+**moonScanUrl** | **String** |  | [optional] 
+**transactions** | [TransactionData] |  | [optional] 
+**data** | **String** |  | 
+**rawTransaction** | **String** |  | [optional] 
+**signedTransaction** | **String** |  | [optional] 
+**transactionHash** | **String** |  | [optional] 
 **keys** | **[String]** |  | [optional] 
 **address** | **String** |  | 
 **name** | **String** |  | [optional] 
