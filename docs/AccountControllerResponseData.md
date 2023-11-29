@@ -5,19 +5,19 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **nonce** | **Double** |  | 
 **balance** | **String** |  | 
-**moonScanUrl** | **String** |  | [optional] 
-**transactionHash** | **String** |  | 
-**signedTransaction** | **String** |  | 
-**signedMessage** | **String** |  | [optional] 
+**transactionHash** | **String** |  | [optional] 
+**signedTransaction** | **String** |  | [optional] 
 **rawTransaction** | **String** |  | [optional] 
+**data** | **String** |  | 
+**transactions** | [TransactionData] |  | [optional] 
+**moonScanUrl** | **String** |  | [optional] 
 **signature** | **String** |  | [optional] 
-**transaction** | [String: Tx] |  | [optional] 
+**transaction** | [**Tx**](Tx.md) |  | [optional] 
 **userOps** | [TransactionRequest] |  | [optional] 
 **useropTransaction** | **String** |  | [optional] 
 **keys** | **[String]** |  | [optional] 
 **address** | **String** |  | 
 **name** | **String** |  | [optional] 
-**data** | **String** |  | 
 **encoding** | **String** |  | [optional] 
 **header** | **Bool** |  | [optional] 
 **signtype** | **Bool** |  | [optional] 
@@ -32,6 +32,21 @@ Name | Type | Description | Notes
 **variableBorrowIndex** | **String** |  | 
 **lastUpdateTimestamp** | **String** |  | 
 **usageAsCollateralEnabled** | **String** |  | 
+**type** | **Double** |  | [optional] 
+**chainId** | **Double** |  | [optional] 
+**gas** | **String** |  | [optional] 
+**gasPrice** | **String** |  | [optional] 
+**gasTipCap** | **String** |  | [optional] 
+**gasFeeCap** | **String** |  | [optional] 
+**value** | **String** |  | [optional] 
+**from** | **String** |  | [optional] 
+**to** | **String** |  | [optional] 
+**blobGas** | **String** |  | [optional] 
+**blobGasFeeCap** | **String** |  | [optional] 
+**blobHashes** | **[String]** |  | [optional] 
+**v** | **String** |  | [optional] 
+**r** | **String** |  | [optional] 
+**s** | **String** |  | [optional] 
 **symbol** | **String** |  | [optional] 
 **decimals** | **String** |  | [optional] 
 **totalSupply** | **String** |  | [optional] 

@@ -12,15 +12,23 @@ import AnyCodable
 
 public struct Erc20Response: Codable, JSONEncodable, Hashable {
 
-    public var moonScanUrl: String?
-    public var transactionHash: String
-    public var signedTransaction: String
-    public var signedMessage: String?
-    public var rawTransaction: String?
-    public var signature: String?
-    public var transaction: [String: Tx]?
-    public var userOps: [TransactionRequest]?
-    public var useropTransaction: String?
+    public var type: Double?
+    public var chainId: Double?
+    public var data: String?
+    public var gas: String?
+    public var gasPrice: String?
+    public var gasTipCap: String?
+    public var gasFeeCap: String?
+    public var value: String?
+    public var nonce: Double?
+    public var from: String?
+    public var to: String?
+    public var blobGas: String?
+    public var blobGasFeeCap: String?
+    public var blobHashes: [String]?
+    public var v: String?
+    public var r: String?
+    public var s: String?
     public var name: String?
     public var symbol: String?
     public var decimals: String?
@@ -29,16 +37,24 @@ public struct Erc20Response: Codable, JSONEncodable, Hashable {
     public var balanceOf: String?
     public var allowance: String?
 
-    public init(moonScanUrl: String? = nil, transactionHash: String, signedTransaction: String, signedMessage: String? = nil, rawTransaction: String? = nil, signature: String? = nil, transaction: [String: Tx]? = nil, userOps: [TransactionRequest]? = nil, useropTransaction: String? = nil, name: String? = nil, symbol: String? = nil, decimals: String? = nil, totalSupply: String? = nil, contractAddress: String? = nil, balanceOf: String? = nil, allowance: String? = nil) {
-        self.moonScanUrl = moonScanUrl
-        self.transactionHash = transactionHash
-        self.signedTransaction = signedTransaction
-        self.signedMessage = signedMessage
-        self.rawTransaction = rawTransaction
-        self.signature = signature
-        self.transaction = transaction
-        self.userOps = userOps
-        self.useropTransaction = useropTransaction
+    public init(type: Double? = nil, chainId: Double? = nil, data: String? = nil, gas: String? = nil, gasPrice: String? = nil, gasTipCap: String? = nil, gasFeeCap: String? = nil, value: String? = nil, nonce: Double? = nil, from: String? = nil, to: String? = nil, blobGas: String? = nil, blobGasFeeCap: String? = nil, blobHashes: [String]? = nil, v: String? = nil, r: String? = nil, s: String? = nil, name: String? = nil, symbol: String? = nil, decimals: String? = nil, totalSupply: String? = nil, contractAddress: String? = nil, balanceOf: String? = nil, allowance: String? = nil) {
+        self.type = type
+        self.chainId = chainId
+        self.data = data
+        self.gas = gas
+        self.gasPrice = gasPrice
+        self.gasTipCap = gasTipCap
+        self.gasFeeCap = gasFeeCap
+        self.value = value
+        self.nonce = nonce
+        self.from = from
+        self.to = to
+        self.blobGas = blobGas
+        self.blobGasFeeCap = blobGasFeeCap
+        self.blobHashes = blobHashes
+        self.v = v
+        self.r = r
+        self.s = s
         self.name = name
         self.symbol = symbol
         self.decimals = decimals
@@ -49,15 +65,23 @@ public struct Erc20Response: Codable, JSONEncodable, Hashable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case moonScanUrl = "moon_scan_url"
-        case transactionHash = "transaction_hash"
-        case signedTransaction = "signed_transaction"
-        case signedMessage = "signed_message"
-        case rawTransaction = "raw_transaction"
-        case signature
-        case transaction
-        case userOps
-        case useropTransaction = "userop_transaction"
+        case type
+        case chainId = "chain_id"
+        case data
+        case gas
+        case gasPrice = "gas_price"
+        case gasTipCap = "gas_tip_cap"
+        case gasFeeCap = "gas_fee_cap"
+        case value
+        case nonce
+        case from
+        case to
+        case blobGas = "blob_gas"
+        case blobGasFeeCap = "blob_gas_fee_cap"
+        case blobHashes = "blob_hashes"
+        case v
+        case r
+        case s
         case name
         case symbol
         case decimals
@@ -71,15 +95,23 @@ public struct Erc20Response: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(moonScanUrl, forKey: .moonScanUrl)
-        try container.encode(transactionHash, forKey: .transactionHash)
-        try container.encode(signedTransaction, forKey: .signedTransaction)
-        try container.encodeIfPresent(signedMessage, forKey: .signedMessage)
-        try container.encodeIfPresent(rawTransaction, forKey: .rawTransaction)
-        try container.encodeIfPresent(signature, forKey: .signature)
-        try container.encodeIfPresent(transaction, forKey: .transaction)
-        try container.encodeIfPresent(userOps, forKey: .userOps)
-        try container.encodeIfPresent(useropTransaction, forKey: .useropTransaction)
+        try container.encodeIfPresent(type, forKey: .type)
+        try container.encodeIfPresent(chainId, forKey: .chainId)
+        try container.encodeIfPresent(data, forKey: .data)
+        try container.encodeIfPresent(gas, forKey: .gas)
+        try container.encodeIfPresent(gasPrice, forKey: .gasPrice)
+        try container.encodeIfPresent(gasTipCap, forKey: .gasTipCap)
+        try container.encodeIfPresent(gasFeeCap, forKey: .gasFeeCap)
+        try container.encodeIfPresent(value, forKey: .value)
+        try container.encodeIfPresent(nonce, forKey: .nonce)
+        try container.encodeIfPresent(from, forKey: .from)
+        try container.encodeIfPresent(to, forKey: .to)
+        try container.encodeIfPresent(blobGas, forKey: .blobGas)
+        try container.encodeIfPresent(blobGasFeeCap, forKey: .blobGasFeeCap)
+        try container.encodeIfPresent(blobHashes, forKey: .blobHashes)
+        try container.encodeIfPresent(v, forKey: .v)
+        try container.encodeIfPresent(r, forKey: .r)
+        try container.encodeIfPresent(s, forKey: .s)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(symbol, forKey: .symbol)
         try container.encodeIfPresent(decimals, forKey: .decimals)

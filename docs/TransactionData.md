@@ -1,14 +1,13 @@
-# Transaction
+# TransactionData
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**transactionHash** | **String** |  | [optional] 
-**signedTransaction** | **String** |  | [optional] 
-**rawTransaction** | **String** |  | [optional] 
-**data** | **String** |  | [optional] 
-**transactions** | [TransactionData] |  | [optional] 
 **moonScanUrl** | **String** |  | [optional] 
+**transactionHash** | **String** |  | 
+**signedTransaction** | **String** |  | 
+**signedMessage** | **String** |  | [optional] 
+**rawTransaction** | **String** |  | [optional] 
 **signature** | **String** |  | [optional] 
 **transaction** | [**Tx**](Tx.md) |  | [optional] 
 **userOps** | [TransactionRequest] |  | [optional] 

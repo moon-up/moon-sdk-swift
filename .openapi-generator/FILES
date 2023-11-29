@@ -113,6 +113,7 @@ OpenAPIClient/Classes/OpenAPIs/Models/SupportedPaymentTypesCurrencyResponse.swif
 OpenAPIClient/Classes/OpenAPIs/Models/SupportedPaymentTypesMessage.swift
 OpenAPIClient/Classes/OpenAPIs/Models/TokenSwapParams.swift
 OpenAPIClient/Classes/OpenAPIs/Models/Transaction.swift
+OpenAPIClient/Classes/OpenAPIs/Models/TransactionData.swift
 OpenAPIClient/Classes/OpenAPIs/Models/TransactionInput.swift
 OpenAPIClient/Classes/OpenAPIs/Models/TransactionInputMetaData.swift
 OpenAPIClient/Classes/OpenAPIs/Models/TransactionInputSupportedParams.swift
@@ -235,6 +236,7 @@ docs/SupportedPaymentTypesCurrencyResponse.md
 docs/SupportedPaymentTypesMessage.md
 docs/TokenSwapParams.md
 docs/Transaction.md
+docs/TransactionData.md
 docs/TransactionInput.md
 docs/TransactionInputMetaData.md
 docs/TransactionInputSupportedParams.md

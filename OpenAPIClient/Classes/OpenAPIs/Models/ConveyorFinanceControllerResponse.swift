@@ -14,13 +14,13 @@ public struct ConveyorFinanceControllerResponse: Codable, JSONEncodable, Hashabl
 
     public var input: InputBody?
     public var convey: TransactionResponse?
-    public var data: Transaction?
+    public var data: TransactionData?
     public var tx: TransactionResponseTx?
     public var signed: Transaction?
     public var success: Bool
     public var message: String
 
-    public init(input: InputBody? = nil, convey: TransactionResponse? = nil, data: Transaction? = nil, tx: TransactionResponseTx? = nil, signed: Transaction? = nil, success: Bool, message: String) {
+    public init(input: InputBody? = nil, convey: TransactionResponse? = nil, data: TransactionData? = nil, tx: TransactionResponseTx? = nil, signed: Transaction? = nil, success: Bool, message: String) {
         self.input = input
         self.convey = convey
         self.data = data
