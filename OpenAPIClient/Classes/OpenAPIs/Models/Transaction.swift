@@ -12,57 +12,57 @@ import AnyCodable
 
 public struct Transaction: Codable, JSONEncodable, Hashable {
 
-    public var useropTransaction: String?
-    public var userOps: [TransactionRequest]?
-    public var transaction: Tx?
-    public var signature: String?
-    public var moonScanUrl: String?
-    public var transactions: [TransactionData]?
-    public var data: String?
-    public var rawTransaction: String?
-    public var signedTransaction: String?
     public var transactionHash: String?
+    public var signedTransaction: String?
+    public var rawTransaction: String?
+    public var data: String?
+    public var transactions: [TransactionData]?
+    public var moonScanUrl: String?
+    public var signature: String?
+    public var transaction: Tx?
+    public var userOps: [TransactionRequest]?
+    public var useropTransaction: String?
 
-    public init(useropTransaction: String? = nil, userOps: [TransactionRequest]? = nil, transaction: Tx? = nil, signature: String? = nil, moonScanUrl: String? = nil, transactions: [TransactionData]? = nil, data: String? = nil, rawTransaction: String? = nil, signedTransaction: String? = nil, transactionHash: String? = nil) {
-        self.useropTransaction = useropTransaction
-        self.userOps = userOps
-        self.transaction = transaction
-        self.signature = signature
-        self.moonScanUrl = moonScanUrl
-        self.transactions = transactions
-        self.data = data
-        self.rawTransaction = rawTransaction
-        self.signedTransaction = signedTransaction
+    public init(transactionHash: String? = nil, signedTransaction: String? = nil, rawTransaction: String? = nil, data: String? = nil, transactions: [TransactionData]? = nil, moonScanUrl: String? = nil, signature: String? = nil, transaction: Tx? = nil, userOps: [TransactionRequest]? = nil, useropTransaction: String? = nil) {
         self.transactionHash = transactionHash
+        self.signedTransaction = signedTransaction
+        self.rawTransaction = rawTransaction
+        self.data = data
+        self.transactions = transactions
+        self.moonScanUrl = moonScanUrl
+        self.signature = signature
+        self.transaction = transaction
+        self.userOps = userOps
+        self.useropTransaction = useropTransaction
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case useropTransaction = "userop_transaction"
-        case userOps
-        case transaction
-        case signature
-        case moonScanUrl = "moon_scan_url"
-        case transactions
-        case data
-        case rawTransaction = "raw_transaction"
-        case signedTransaction = "signed_transaction"
         case transactionHash = "transaction_hash"
+        case signedTransaction = "signed_transaction"
+        case rawTransaction = "raw_transaction"
+        case data
+        case transactions
+        case moonScanUrl = "moon_scan_url"
+        case signature
+        case transaction
+        case userOps
+        case useropTransaction = "userop_transaction"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(useropTransaction, forKey: .useropTransaction)
-        try container.encodeIfPresent(userOps, forKey: .userOps)
-        try container.encodeIfPresent(transaction, forKey: .transaction)
-        try container.encodeIfPresent(signature, forKey: .signature)
-        try container.encodeIfPresent(moonScanUrl, forKey: .moonScanUrl)
-        try container.encodeIfPresent(transactions, forKey: .transactions)
-        try container.encodeIfPresent(data, forKey: .data)
-        try container.encodeIfPresent(rawTransaction, forKey: .rawTransaction)
-        try container.encodeIfPresent(signedTransaction, forKey: .signedTransaction)
         try container.encodeIfPresent(transactionHash, forKey: .transactionHash)
+        try container.encodeIfPresent(signedTransaction, forKey: .signedTransaction)
+        try container.encodeIfPresent(rawTransaction, forKey: .rawTransaction)
+        try container.encodeIfPresent(data, forKey: .data)
+        try container.encodeIfPresent(transactions, forKey: .transactions)
+        try container.encodeIfPresent(moonScanUrl, forKey: .moonScanUrl)
+        try container.encodeIfPresent(signature, forKey: .signature)
+        try container.encodeIfPresent(transaction, forKey: .transaction)
+        try container.encodeIfPresent(userOps, forKey: .userOps)
+        try container.encodeIfPresent(useropTransaction, forKey: .useropTransaction)
     }
 }
 
