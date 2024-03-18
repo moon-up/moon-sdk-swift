@@ -1,6 +1,6 @@
 # SolanaAPI
 
-All URIs are relative to *https://vault-api.usemoon.ai*
+All URIs are relative to *https://moon-vault-api-git-ew-supabase-migration-moonup.vercel.app*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 # **createSolanaAccount**
 ```swift
-    open class func createSolanaAccount(authorization: String, solanaInput: SolanaInput, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func createSolanaAccount(authorization: String, solanaInput: SolanaInput, completion: @escaping (_ data: AccountAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -46,7 +46,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**AccountAPIResponse**](AccountAPIResponse.md)
 
 ### Authorization
 
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 
 # **getSolanaAccount**
 ```swift
-    open class func getSolanaAccount(authorization: String, accountName: String, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func getSolanaAccount(authorization: String, accountName: String, completion: @escaping (_ data: AccountAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**AccountAPIResponse**](AccountAPIResponse.md)
 
 ### Authorization
 
@@ -110,7 +110,7 @@ Name | Type | Description  | Notes
 
 # **listSolanaAccounts**
 ```swift
-    open class func listSolanaAccounts(authorization: String, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func listSolanaAccounts(authorization: String, completion: @escaping (_ data: AccountAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -142,7 +142,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**AccountAPIResponse**](AccountAPIResponse.md)
 
 ### Authorization
 
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 
 # **signSolanaTransaction**
 ```swift
-    open class func signSolanaTransaction(authorization: String, accountName: String, solanaTransactionInput: SolanaTransactionInput, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func signSolanaTransaction(authorization: String, accountName: String, solanaTransactionInput: SolanaTransactionInput, completion: @escaping (_ data: SolanaAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -193,7 +193,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**SolanaAPIResponse**](SolanaAPIResponse.md)
 
 ### Authorization
 

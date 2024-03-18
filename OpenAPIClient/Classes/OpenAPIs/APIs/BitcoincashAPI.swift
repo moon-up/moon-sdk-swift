@@ -20,7 +20,7 @@ open class BitcoincashAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func createBitcoinCashAccount(authorization: String, bitcoinCashInput: BitcoinCashInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func createBitcoinCashAccount(authorization: String, bitcoinCashInput: BitcoinCashInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return createBitcoinCashAccountWithRequestBuilder(authorization: authorization, bitcoinCashInput: bitcoinCashInput).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -41,9 +41,9 @@ open class BitcoincashAPI {
        - name: BearerAuth
      - parameter authorization: (header)  
      - parameter bitcoinCashInput: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<AccountAPIResponse> 
      */
-    open class func createBitcoinCashAccountWithRequestBuilder(authorization: String, bitcoinCashInput: BitcoinCashInput) -> RequestBuilder<AccountControllerResponse> {
+    open class func createBitcoinCashAccountWithRequestBuilder(authorization: String, bitcoinCashInput: BitcoinCashInput) -> RequestBuilder<AccountAPIResponse> {
         let localVariablePath = "/bitcoincash"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: bitcoinCashInput)
@@ -51,12 +51,13 @@ open class BitcoincashAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<AccountAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -69,7 +70,7 @@ open class BitcoincashAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getBitcoinCashAccount(authorization: String, accountName: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getBitcoinCashAccount(authorization: String, accountName: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return getBitcoinCashAccountWithRequestBuilder(authorization: authorization, accountName: accountName).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -90,9 +91,9 @@ open class BitcoincashAPI {
        - name: BearerAuth
      - parameter authorization: (header)  
      - parameter accountName: (path)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<AccountAPIResponse> 
      */
-    open class func getBitcoinCashAccountWithRequestBuilder(authorization: String, accountName: String) -> RequestBuilder<AccountControllerResponse> {
+    open class func getBitcoinCashAccountWithRequestBuilder(authorization: String, accountName: String) -> RequestBuilder<AccountAPIResponse> {
         var localVariablePath = "/bitcoincash/{accountName}"
         let accountNamePreEscape = "\(APIHelper.mapValueToPathItem(accountName))"
         let accountNamePostEscape = accountNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -108,7 +109,7 @@ open class BitcoincashAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<AccountAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -120,7 +121,7 @@ open class BitcoincashAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func listBitcoinCashAccounts(authorization: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func listBitcoinCashAccounts(authorization: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return listBitcoinCashAccountsWithRequestBuilder(authorization: authorization).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -140,9 +141,9 @@ open class BitcoincashAPI {
        - type: apiKey Authorization (HEADER)
        - name: BearerAuth
      - parameter authorization: (header)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<AccountAPIResponse> 
      */
-    open class func listBitcoinCashAccountsWithRequestBuilder(authorization: String) -> RequestBuilder<AccountControllerResponse> {
+    open class func listBitcoinCashAccountsWithRequestBuilder(authorization: String) -> RequestBuilder<AccountAPIResponse> {
         let localVariablePath = "/bitcoincash"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -155,7 +156,7 @@ open class BitcoincashAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<AccountAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -169,7 +170,7 @@ open class BitcoincashAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func signBitcoinCashTransaction(authorization: String, accountName: String, bitcoinCashTransactionInput: BitcoinCashTransactionInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func signBitcoinCashTransaction(authorization: String, accountName: String, bitcoinCashTransactionInput: BitcoinCashTransactionInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BitcoinCashAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return signBitcoinCashTransactionWithRequestBuilder(authorization: authorization, accountName: accountName, bitcoinCashTransactionInput: bitcoinCashTransactionInput).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -191,9 +192,9 @@ open class BitcoincashAPI {
      - parameter authorization: (header)  
      - parameter accountName: (path)  
      - parameter bitcoinCashTransactionInput: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<BitcoinCashAPIResponse> 
      */
-    open class func signBitcoinCashTransactionWithRequestBuilder(authorization: String, accountName: String, bitcoinCashTransactionInput: BitcoinCashTransactionInput) -> RequestBuilder<AccountControllerResponse> {
+    open class func signBitcoinCashTransactionWithRequestBuilder(authorization: String, accountName: String, bitcoinCashTransactionInput: BitcoinCashTransactionInput) -> RequestBuilder<BitcoinCashAPIResponse> {
         var localVariablePath = "/bitcoincash/{accountName}/sign-tx"
         let accountNamePreEscape = "\(APIHelper.mapValueToPathItem(accountName))"
         let accountNamePostEscape = accountNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -204,12 +205,13 @@ open class BitcoincashAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<BitcoinCashAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

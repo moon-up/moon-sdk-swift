@@ -1,6 +1,6 @@
 # RippleAPI
 
-All URIs are relative to *https://vault-api.usemoon.ai*
+All URIs are relative to *https://moon-vault-api-git-ew-supabase-migration-moonup.vercel.app*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 # **createRippleAccount**
 ```swift
-    open class func createRippleAccount(authorization: String, rippleInput: RippleInput, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func createRippleAccount(authorization: String, rippleInput: RippleInput, completion: @escaping (_ data: AccountAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -46,7 +46,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**AccountAPIResponse**](AccountAPIResponse.md)
 
 ### Authorization
 
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 
 # **getRippleAccount**
 ```swift
-    open class func getRippleAccount(authorization: String, accountName: String, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func getRippleAccount(authorization: String, accountName: String, completion: @escaping (_ data: AccountAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**AccountAPIResponse**](AccountAPIResponse.md)
 
 ### Authorization
 
@@ -110,7 +110,7 @@ Name | Type | Description  | Notes
 
 # **listRippleAccounts**
 ```swift
-    open class func listRippleAccounts(authorization: String, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func listRippleAccounts(authorization: String, completion: @escaping (_ data: AccountAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -142,7 +142,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**AccountAPIResponse**](AccountAPIResponse.md)
 
 ### Authorization
 
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 
 # **signRippleTransaction**
 ```swift
-    open class func signRippleTransaction(authorization: String, accountName: String, rippleTransactionInput: RippleTransactionInput, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func signRippleTransaction(authorization: String, accountName: String, rippleTransactionInput: RippleTransactionInput, completion: @escaping (_ data: RippleAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -193,7 +193,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**RippleAPIResponse**](RippleAPIResponse.md)
 
 ### Authorization
 

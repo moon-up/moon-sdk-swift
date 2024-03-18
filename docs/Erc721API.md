@@ -1,6 +1,6 @@
 # Erc721API
 
-All URIs are relative to *https://vault-api.usemoon.ai*
+All URIs are relative to *https://moon-vault-api-git-ew-supabase-migration-moonup.vercel.app*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 # **approve**
 ```swift
-    open class func approve(authorization: String, name: String, erc721Request: Erc721Request, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func approve(authorization: String, name: String, erc721Request: Erc721Request, completion: @escaping (_ data: TransactionAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**TransactionAPIResponse**](TransactionAPIResponse.md)
 
 ### Authorization
 
@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 
 # **balanceOf**
 ```swift
-    open class func balanceOf(authorization: String, name: String, erc721Request: Erc721Request, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func balanceOf(authorization: String, name: String, erc721Request: Erc721Request, completion: @escaping (_ data: TransactionAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -107,7 +107,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**TransactionAPIResponse**](TransactionAPIResponse.md)
 
 ### Authorization
 
@@ -122,7 +122,7 @@ Name | Type | Description  | Notes
 
 # **getApproved**
 ```swift
-    open class func getApproved(authorization: String, name: String, erc721Request: Erc721Request, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func getApproved(authorization: String, name: String, erc721Request: Erc721Request, completion: @escaping (_ data: TransactionAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**TransactionAPIResponse**](TransactionAPIResponse.md)
 
 ### Authorization
 
@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 
 # **isApprovedForAll**
 ```swift
-    open class func isApprovedForAll(authorization: String, name: String, erc721Request: Erc721Request, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func isApprovedForAll(authorization: String, name: String, erc721Request: Erc721Request, completion: @escaping (_ data: TransactionAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -209,7 +209,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**TransactionAPIResponse**](TransactionAPIResponse.md)
 
 ### Authorization
 
@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 
 # **name**
 ```swift
-    open class func name(authorization: String, name: String, erc721Request: Erc721Request, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func name(authorization: String, name: String, erc721Request: Erc721Request, completion: @escaping (_ data: TransactionAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -260,7 +260,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**TransactionAPIResponse**](TransactionAPIResponse.md)
 
 ### Authorization
 
@@ -275,7 +275,7 @@ Name | Type | Description  | Notes
 
 # **ownerOf**
 ```swift
-    open class func ownerOf(authorization: String, name: String, erc721Request: Erc721Request, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func ownerOf(authorization: String, name: String, erc721Request: Erc721Request, completion: @escaping (_ data: TransactionAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -311,7 +311,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**TransactionAPIResponse**](TransactionAPIResponse.md)
 
 ### Authorization
 
@@ -326,7 +326,7 @@ Name | Type | Description  | Notes
 
 # **safeTransferFrom**
 ```swift
-    open class func safeTransferFrom(authorization: String, name: String, erc721Request: Erc721Request, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func safeTransferFrom(authorization: String, name: String, erc721Request: Erc721Request, completion: @escaping (_ data: TransactionAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -362,7 +362,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**TransactionAPIResponse**](TransactionAPIResponse.md)
 
 ### Authorization
 
@@ -377,7 +377,7 @@ Name | Type | Description  | Notes
 
 # **setApprovalForAll**
 ```swift
-    open class func setApprovalForAll(authorization: String, name: String, erc721Request: Erc721Request, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func setApprovalForAll(authorization: String, name: String, erc721Request: Erc721Request, completion: @escaping (_ data: TransactionAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -413,7 +413,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**TransactionAPIResponse**](TransactionAPIResponse.md)
 
 ### Authorization
 
@@ -428,7 +428,7 @@ Name | Type | Description  | Notes
 
 # **symbol**
 ```swift
-    open class func symbol(authorization: String, name: String, erc721Request: Erc721Request, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func symbol(authorization: String, name: String, erc721Request: Erc721Request, completion: @escaping (_ data: TransactionAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -464,7 +464,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**TransactionAPIResponse**](TransactionAPIResponse.md)
 
 ### Authorization
 
@@ -479,7 +479,7 @@ Name | Type | Description  | Notes
 
 # **tokenUri**
 ```swift
-    open class func tokenUri(authorization: String, name: String, erc721Request: Erc721Request, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func tokenUri(authorization: String, name: String, erc721Request: Erc721Request, completion: @escaping (_ data: TransactionAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -515,7 +515,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**TransactionAPIResponse**](TransactionAPIResponse.md)
 
 ### Authorization
 
@@ -530,7 +530,7 @@ Name | Type | Description  | Notes
 
 # **transfer**
 ```swift
-    open class func transfer(authorization: String, name: String, erc721Request: Erc721Request, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func transfer(authorization: String, name: String, erc721Request: Erc721Request, completion: @escaping (_ data: TransactionAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -566,7 +566,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**TransactionAPIResponse**](TransactionAPIResponse.md)
 
 ### Authorization
 
@@ -581,7 +581,7 @@ Name | Type | Description  | Notes
 
 # **transferFrom**
 ```swift
-    open class func transferFrom(authorization: String, name: String, erc721Request: Erc721Request, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func transferFrom(authorization: String, name: String, erc721Request: Erc721Request, completion: @escaping (_ data: TransactionAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -617,7 +617,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**TransactionAPIResponse**](TransactionAPIResponse.md)
 
 ### Authorization
 

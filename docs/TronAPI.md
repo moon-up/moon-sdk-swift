@@ -1,6 +1,6 @@
 # TronAPI
 
-All URIs are relative to *https://vault-api.usemoon.ai*
+All URIs are relative to *https://moon-vault-api-git-ew-supabase-migration-moonup.vercel.app*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 # **createTronAccount**
 ```swift
-    open class func createTronAccount(authorization: String, tronInput: TronInput, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func createTronAccount(authorization: String, tronInput: TronInput, completion: @escaping (_ data: AccountAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -46,7 +46,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**AccountAPIResponse**](AccountAPIResponse.md)
 
 ### Authorization
 
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 
 # **getTronAccount**
 ```swift
-    open class func getTronAccount(authorization: String, accountName: String, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func getTronAccount(authorization: String, accountName: String, completion: @escaping (_ data: AccountAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**AccountAPIResponse**](AccountAPIResponse.md)
 
 ### Authorization
 
@@ -110,7 +110,7 @@ Name | Type | Description  | Notes
 
 # **listTronAccounts**
 ```swift
-    open class func listTronAccounts(authorization: String, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func listTronAccounts(authorization: String, completion: @escaping (_ data: AccountAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -142,7 +142,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**AccountAPIResponse**](AccountAPIResponse.md)
 
 ### Authorization
 
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 
 # **signTronTransaction**
 ```swift
-    open class func signTronTransaction(authorization: String, accountName: String, tronTransactionInput: TronTransactionInput, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func signTronTransaction(authorization: String, accountName: String, tronTransactionInput: TronTransactionInput, completion: @escaping (_ data: TronAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -193,7 +193,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**TronAPIResponse**](TronAPIResponse.md)
 
 ### Authorization
 

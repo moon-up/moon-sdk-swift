@@ -1,6 +1,6 @@
 # AaveAPI
 
-All URIs are relative to *https://vault-api.usemoon.ai*
+All URIs are relative to *https://moon-vault-api-git-ew-supabase-migration-moonup.vercel.app*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 # **borrow**
 ```swift
-    open class func borrow(authorization: String, name: String, aaveInput: AaveInput, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func borrow(authorization: String, name: String, aaveInput: AaveInput, completion: @escaping (_ data: TransactionAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -48,7 +48,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**TransactionAPIResponse**](TransactionAPIResponse.md)
 
 ### Authorization
 
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 
 # **lend**
 ```swift
-    open class func lend(authorization: String, name: String, aaveInput: AaveInput, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func lend(authorization: String, name: String, aaveInput: AaveInput, completion: @escaping (_ data: TransactionAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**TransactionAPIResponse**](TransactionAPIResponse.md)
 
 ### Authorization
 
@@ -114,7 +114,7 @@ Name | Type | Description  | Notes
 
 # **repay**
 ```swift
-    open class func repay(authorization: String, name: String, aaveInput: AaveInput, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func repay(authorization: String, name: String, aaveInput: AaveInput, completion: @escaping (_ data: TransactionAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**TransactionAPIResponse**](TransactionAPIResponse.md)
 
 ### Authorization
 
@@ -165,7 +165,7 @@ Name | Type | Description  | Notes
 
 # **userReserveData**
 ```swift
-    open class func userReserveData(authorization: String, name: String, aaveInput: AaveInput, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func userReserveData(authorization: String, name: String, aaveInput: AaveInput, completion: @escaping (_ data: AaveReservesAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**AaveReservesAPIResponse**](AaveReservesAPIResponse.md)
 
 ### Authorization
 

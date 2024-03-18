@@ -1,6 +1,6 @@
 # ENSAPI
 
-All URIs are relative to *https://vault-api.usemoon.ai*
+All URIs are relative to *https://moon-vault-api-git-ew-supabase-migration-moonup.vercel.app*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 # **resolve**
 ```swift
-    open class func resolve(authorization: String, ensResolveInput: EnsResolveInput, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func resolve(authorization: String, ensResolveInput: EnsResolveInput, completion: @escaping (_ data: EnsResolveAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -43,7 +43,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**EnsResolveAPIResponse**](EnsResolveAPIResponse.md)
 
 ### Authorization
 

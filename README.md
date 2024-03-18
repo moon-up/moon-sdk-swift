@@ -21,7 +21,7 @@ Run `pod install`
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://vault-api.usemoon.ai*
+All URIs are relative to *https://moon-vault-api-git-ew-supabase-migration-moonup.vercel.app*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -112,14 +112,6 @@ Class | Method | HTTP request | Description
 *OnramperAPI* | [**onRamperGetSupportedOnRampsAll**](docs/OnramperAPI.md#onrampergetsupportedonrampsall) | **GET** /onramper/onramps | 
 *OnramperAPI* | [**onRamperGetSupportedPaymentTypes**](docs/OnramperAPI.md#onrampergetsupportedpaymenttypes) | **GET** /onramper/payment-types | 
 *OnramperAPI* | [**onRamperGetSupportedPaymentTypesFiat**](docs/OnramperAPI.md#onrampergetsupportedpaymenttypesfiat) | **GET** /onramper/payment-types/fiat | 
-*PaymentAPI* | [**moralisWebhook**](docs/PaymentAPI.md#moraliswebhook) | **POST** /payment/webhook/{id} | 
-*PaymentAPI* | [**paymentCreatePaymentIntent**](docs/PaymentAPI.md#paymentcreatepaymentintent) | **POST** /payment | 
-*PaymentAPI* | [**paymentDeletePaymentIntent**](docs/PaymentAPI.md#paymentdeletepaymentintent) | **DELETE** /payment/{id} | 
-*PaymentAPI* | [**paymentGetAllPaymentIntents**](docs/PaymentAPI.md#paymentgetallpaymentintents) | **GET** /payment | 
-*PaymentAPI* | [**paymentGetAvailableChains**](docs/PaymentAPI.md#paymentgetavailablechains) | **GET** /payment/chains | 
-*PaymentAPI* | [**paymentGetPaymentIntent**](docs/PaymentAPI.md#paymentgetpaymentintent) | **GET** /payment/{id} | 
-*PaymentAPI* | [**paymentUpdatePaymentIntent**](docs/PaymentAPI.md#paymentupdatepaymentintent) | **PUT** /payment/{id} | 
-*PaymentAPI* | [**tatumWebhook**](docs/PaymentAPI.md#tatumwebhook) | **POST** /payment/tatum/webhook/{id} | 
 *RippleAPI* | [**createRippleAccount**](docs/RippleAPI.md#createrippleaccount) | **POST** /ripple | 
 *RippleAPI* | [**getRippleAccount**](docs/RippleAPI.md#getrippleaccount) | **GET** /ripple/{accountName} | 
 *RippleAPI* | [**listRippleAccounts**](docs/RippleAPI.md#listrippleaccounts) | **GET** /ripple | 
@@ -145,75 +137,75 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [AaveInput](docs/AaveInput.md)
+ - [AaveReservesAPIResponse](docs/AaveReservesAPIResponse.md)
  - [AaveReservesData](docs/AaveReservesData.md)
- - [AbiInput](docs/AbiInput.md)
- - [AbiItem](docs/AbiItem.md)
- - [AbiOutput](docs/AbiOutput.md)
- - [AccountControllerResponse](docs/AccountControllerResponse.md)
- - [AccountControllerResponseData](docs/AccountControllerResponseData.md)
+ - [AccountAPIResponse](docs/AccountAPIResponse.md)
+ - [AccountData](docs/AccountData.md)
  - [AccountResponse](docs/AccountResponse.md)
  - [AvailablePaymentMethod](docs/AvailablePaymentMethod.md)
+ - [BalanceAPIResponse](docs/BalanceAPIResponse.md)
  - [BalanceResponse](docs/BalanceResponse.md)
+ - [BitcoinAPIResponse](docs/BitcoinAPIResponse.md)
+ - [BitcoinCashAPIResponse](docs/BitcoinCashAPIResponse.md)
  - [BitcoinCashInput](docs/BitcoinCashInput.md)
  - [BitcoinCashTransactionInput](docs/BitcoinCashTransactionInput.md)
+ - [BitcoinCashTransactionOutput](docs/BitcoinCashTransactionOutput.md)
  - [BitcoinInput](docs/BitcoinInput.md)
  - [BitcoinTransactionInput](docs/BitcoinTransactionInput.md)
  - [BitcoinTransactionOutput](docs/BitcoinTransactionOutput.md)
- - [Block](docs/Block.md)
+ - [BroadCastRawTransactionAPIResponse](docs/BroadCastRawTransactionAPIResponse.md)
  - [BroadCastRawTransactionResponse](docs/BroadCastRawTransactionResponse.md)
  - [BroadcastInput](docs/BroadcastInput.md)
  - [ConveyorFinanceControllerResponse](docs/ConveyorFinanceControllerResponse.md)
+ - [CosmosAPIResponse](docs/CosmosAPIResponse.md)
  - [CosmosInput](docs/CosmosInput.md)
  - [CosmosTransactionInput](docs/CosmosTransactionInput.md)
+ - [CosmosTransactionOutput](docs/CosmosTransactionOutput.md)
  - [CreateAccountInput](docs/CreateAccountInput.md)
- - [CreatePaymentIntentInput](docs/CreatePaymentIntentInput.md)
  - [CryptoCurrency](docs/CryptoCurrency.md)
  - [DeployInput](docs/DeployInput.md)
+ - [DogeCoinAPIResponse](docs/DogeCoinAPIResponse.md)
  - [DogeCoinInput](docs/DogeCoinInput.md)
  - [DogeCoinTransactionInput](docs/DogeCoinTransactionInput.md)
- - [ENSReverseResolveResponse](docs/ENSReverseResolveResponse.md)
+ - [DogeCoinTransactionOutput](docs/DogeCoinTransactionOutput.md)
+ - [EnsResolveAPIResponse](docs/EnsResolveAPIResponse.md)
  - [EnsResolveInput](docs/EnsResolveInput.md)
  - [EnsResolveResponse](docs/EnsResolveResponse.md)
+ - [EosAPIResponse](docs/EosAPIResponse.md)
  - [EosInput](docs/EosInput.md)
  - [EosTransactionInput](docs/EosTransactionInput.md)
+ - [EosTransactionOutput](docs/EosTransactionOutput.md)
  - [Erc1155Request](docs/Erc1155Request.md)
- - [Erc1155Response](docs/Erc1155Response.md)
- - [Erc20Response](docs/Erc20Response.md)
  - [Erc721Request](docs/Erc721Request.md)
- - [Erc721Response](docs/Erc721Response.md)
  - [FiatCurrency](docs/FiatCurrency.md)
  - [GetSupportedOnRampsResponse](docs/GetSupportedOnRampsResponse.md)
  - [GetSupportedOnRampsResponseMessageInner](docs/GetSupportedOnRampsResponseMessageInner.md)
  - [GetSupportedOnRampsResponseMessageInnerIcons](docs/GetSupportedOnRampsResponseMessageInnerIcons.md)
  - [GetSupportedOnRampsResponseMessageInnerIconsPng](docs/GetSupportedOnRampsResponseMessageInnerIconsPng.md)
  - [GetSwapDto](docs/GetSwapDto.md)
- - [IERC20Approval](docs/IERC20Approval.md)
- - [IERC20Transfer](docs/IERC20Transfer.md)
- - [INFTApproval](docs/INFTApproval.md)
- - [INFTApprovalERC1155](docs/INFTApprovalERC1155.md)
- - [INFTApprovalERC721](docs/INFTApprovalERC721.md)
- - [INFTTransfer](docs/INFTTransfer.md)
- - [INativeBalance](docs/INativeBalance.md)
- - [IOldNFTApproval](docs/IOldNFTApproval.md)
- - [IWebhook](docs/IWebhook.md)
  - [InputBody](docs/InputBody.md)
- - [InternalTransaction](docs/InternalTransaction.md)
+ - [LitecoinAPIResponse](docs/LitecoinAPIResponse.md)
  - [LitecoinInput](docs/LitecoinInput.md)
  - [LitecoinTransactionInput](docs/LitecoinTransactionInput.md)
- - [Log](docs/Log.md)
+ - [LitecoinTransactionOutput](docs/LitecoinTransactionOutput.md)
  - [Message](docs/Message.md)
+ - [NonceAPIResponse](docs/NonceAPIResponse.md)
  - [NonceResponse](docs/NonceResponse.md)
- - [PaymentIntentResponse](docs/PaymentIntentResponse.md)
  - [PaymentType](docs/PaymentType.md)
  - [PingResponse](docs/PingResponse.md)
  - [Quote](docs/Quote.md)
+ - [RippleAPIResponse](docs/RippleAPIResponse.md)
  - [RippleInput](docs/RippleInput.md)
  - [RippleTransactionInput](docs/RippleTransactionInput.md)
+ - [RippleTransactionOutput](docs/RippleTransactionOutput.md)
  - [SellQuote](docs/SellQuote.md)
  - [SignMessage](docs/SignMessage.md)
+ - [SignMessageAPIResponse](docs/SignMessageAPIResponse.md)
  - [SignTypedData](docs/SignTypedData.md)
+ - [SolanaAPIResponse](docs/SolanaAPIResponse.md)
  - [SolanaInput](docs/SolanaInput.md)
  - [SolanaTransactionInput](docs/SolanaTransactionInput.md)
+ - [SolanaTransactionOutput](docs/SolanaTransactionOutput.md)
  - [SupportedAssetResponse](docs/SupportedAssetResponse.md)
  - [SupportedAssetResponseAssetsInner](docs/SupportedAssetResponseAssetsInner.md)
  - [SupportedCurrenciesResponse](docs/SupportedCurrenciesResponse.md)
@@ -224,6 +216,7 @@ Class | Method | HTTP request | Description
  - [SupportedPaymentTypesMessage](docs/SupportedPaymentTypesMessage.md)
  - [TokenSwapParams](docs/TokenSwapParams.md)
  - [Transaction](docs/Transaction.md)
+ - [TransactionAPIResponse](docs/TransactionAPIResponse.md)
  - [TransactionData](docs/TransactionData.md)
  - [TransactionInput](docs/TransactionInput.md)
  - [TransactionInputMetaData](docs/TransactionInputMetaData.md)
@@ -236,9 +229,10 @@ Class | Method | HTTP request | Description
  - [TransactionResponse](docs/TransactionResponse.md)
  - [TransactionResponseInfo](docs/TransactionResponseInfo.md)
  - [TransactionResponseTx](docs/TransactionResponseTx.md)
- - [TriggerOutput](docs/TriggerOutput.md)
+ - [TronAPIResponse](docs/TronAPIResponse.md)
  - [TronInput](docs/TronInput.md)
  - [TronTransactionInput](docs/TronTransactionInput.md)
+ - [TronTransactionOutput](docs/TronTransactionOutput.md)
  - [Tx](docs/Tx.md)
  - [UniswapInput](docs/UniswapInput.md)
 

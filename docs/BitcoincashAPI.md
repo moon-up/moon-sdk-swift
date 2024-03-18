@@ -1,6 +1,6 @@
 # BitcoincashAPI
 
-All URIs are relative to *https://vault-api.usemoon.ai*
+All URIs are relative to *https://moon-vault-api-git-ew-supabase-migration-moonup.vercel.app*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 # **createBitcoinCashAccount**
 ```swift
-    open class func createBitcoinCashAccount(authorization: String, bitcoinCashInput: BitcoinCashInput, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func createBitcoinCashAccount(authorization: String, bitcoinCashInput: BitcoinCashInput, completion: @escaping (_ data: AccountAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -46,7 +46,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**AccountAPIResponse**](AccountAPIResponse.md)
 
 ### Authorization
 
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 
 # **getBitcoinCashAccount**
 ```swift
-    open class func getBitcoinCashAccount(authorization: String, accountName: String, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func getBitcoinCashAccount(authorization: String, accountName: String, completion: @escaping (_ data: AccountAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**AccountAPIResponse**](AccountAPIResponse.md)
 
 ### Authorization
 
@@ -110,7 +110,7 @@ Name | Type | Description  | Notes
 
 # **listBitcoinCashAccounts**
 ```swift
-    open class func listBitcoinCashAccounts(authorization: String, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func listBitcoinCashAccounts(authorization: String, completion: @escaping (_ data: AccountAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -142,7 +142,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**AccountAPIResponse**](AccountAPIResponse.md)
 
 ### Authorization
 
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 
 # **signBitcoinCashTransaction**
 ```swift
-    open class func signBitcoinCashTransaction(authorization: String, accountName: String, bitcoinCashTransactionInput: BitcoinCashTransactionInput, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func signBitcoinCashTransaction(authorization: String, accountName: String, bitcoinCashTransactionInput: BitcoinCashTransactionInput, completion: @escaping (_ data: BitcoinCashAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -193,7 +193,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**BitcoinCashAPIResponse**](BitcoinCashAPIResponse.md)
 
 ### Authorization
 

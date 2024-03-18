@@ -56,6 +56,7 @@ open class ConveyorFinanceAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 

@@ -20,7 +20,7 @@ open class EosAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func createEosAccount(authorization: String, eosInput: EosInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func createEosAccount(authorization: String, eosInput: EosInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return createEosAccountWithRequestBuilder(authorization: authorization, eosInput: eosInput).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -41,9 +41,9 @@ open class EosAPI {
        - name: BearerAuth
      - parameter authorization: (header)  
      - parameter eosInput: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<AccountAPIResponse> 
      */
-    open class func createEosAccountWithRequestBuilder(authorization: String, eosInput: EosInput) -> RequestBuilder<AccountControllerResponse> {
+    open class func createEosAccountWithRequestBuilder(authorization: String, eosInput: EosInput) -> RequestBuilder<AccountAPIResponse> {
         let localVariablePath = "/eos"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: eosInput)
@@ -51,12 +51,13 @@ open class EosAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<AccountAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -69,7 +70,7 @@ open class EosAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getEosAccount(authorization: String, accountName: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getEosAccount(authorization: String, accountName: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return getEosAccountWithRequestBuilder(authorization: authorization, accountName: accountName).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -90,9 +91,9 @@ open class EosAPI {
        - name: BearerAuth
      - parameter authorization: (header)  
      - parameter accountName: (path)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<AccountAPIResponse> 
      */
-    open class func getEosAccountWithRequestBuilder(authorization: String, accountName: String) -> RequestBuilder<AccountControllerResponse> {
+    open class func getEosAccountWithRequestBuilder(authorization: String, accountName: String) -> RequestBuilder<AccountAPIResponse> {
         var localVariablePath = "/eos/{accountName}"
         let accountNamePreEscape = "\(APIHelper.mapValueToPathItem(accountName))"
         let accountNamePostEscape = accountNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -108,7 +109,7 @@ open class EosAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<AccountAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -120,7 +121,7 @@ open class EosAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func listEosAccounts(authorization: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func listEosAccounts(authorization: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return listEosAccountsWithRequestBuilder(authorization: authorization).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -140,9 +141,9 @@ open class EosAPI {
        - type: apiKey Authorization (HEADER)
        - name: BearerAuth
      - parameter authorization: (header)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<AccountAPIResponse> 
      */
-    open class func listEosAccountsWithRequestBuilder(authorization: String) -> RequestBuilder<AccountControllerResponse> {
+    open class func listEosAccountsWithRequestBuilder(authorization: String) -> RequestBuilder<AccountAPIResponse> {
         let localVariablePath = "/eos"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -155,7 +156,7 @@ open class EosAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<AccountAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -169,7 +170,7 @@ open class EosAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func signEosTransaction(authorization: String, accountName: String, eosTransactionInput: EosTransactionInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func signEosTransaction(authorization: String, accountName: String, eosTransactionInput: EosTransactionInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EosAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return signEosTransactionWithRequestBuilder(authorization: authorization, accountName: accountName, eosTransactionInput: eosTransactionInput).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -191,9 +192,9 @@ open class EosAPI {
      - parameter authorization: (header)  
      - parameter accountName: (path)  
      - parameter eosTransactionInput: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<EosAPIResponse> 
      */
-    open class func signEosTransactionWithRequestBuilder(authorization: String, accountName: String, eosTransactionInput: EosTransactionInput) -> RequestBuilder<AccountControllerResponse> {
+    open class func signEosTransactionWithRequestBuilder(authorization: String, accountName: String, eosTransactionInput: EosTransactionInput) -> RequestBuilder<EosAPIResponse> {
         var localVariablePath = "/eos/{accountName}/sign-tx"
         let accountNamePreEscape = "\(APIHelper.mapValueToPathItem(accountName))"
         let accountNamePostEscape = accountNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -204,12 +205,13 @@ open class EosAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<EosAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

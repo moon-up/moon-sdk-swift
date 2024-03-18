@@ -1,6 +1,6 @@
 # ERC1155API
 
-All URIs are relative to *https://vault-api.usemoon.ai*
+All URIs are relative to *https://moon-vault-api-git-ew-supabase-migration-moonup.vercel.app*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 # **balanceOf**
 ```swift
-    open class func balanceOf(name: String, authorization: String, erc1155Request: Erc1155Request, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func balanceOf(name: String, authorization: String, erc1155Request: Erc1155Request, completion: @escaping (_ data: TransactionAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -50,7 +50,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**TransactionAPIResponse**](TransactionAPIResponse.md)
 
 ### Authorization
 
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 # **balanceOfBatch**
 ```swift
-    open class func balanceOfBatch(name: String, authorization: String, erc1155Request: Erc1155Request, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func balanceOfBatch(name: String, authorization: String, erc1155Request: Erc1155Request, completion: @escaping (_ data: TransactionAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -101,7 +101,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**TransactionAPIResponse**](TransactionAPIResponse.md)
 
 ### Authorization
 
@@ -116,7 +116,7 @@ Name | Type | Description  | Notes
 
 # **isApprovedForAll**
 ```swift
-    open class func isApprovedForAll(name: String, authorization: String, erc1155Request: Erc1155Request, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func isApprovedForAll(name: String, authorization: String, erc1155Request: Erc1155Request, completion: @escaping (_ data: TransactionAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -152,7 +152,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**TransactionAPIResponse**](TransactionAPIResponse.md)
 
 ### Authorization
 
@@ -167,7 +167,7 @@ Name | Type | Description  | Notes
 
 # **safeBatchTransferFrom**
 ```swift
-    open class func safeBatchTransferFrom(name: String, authorization: String, erc1155Request: Erc1155Request, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func safeBatchTransferFrom(name: String, authorization: String, erc1155Request: Erc1155Request, completion: @escaping (_ data: TransactionAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -203,7 +203,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**TransactionAPIResponse**](TransactionAPIResponse.md)
 
 ### Authorization
 
@@ -218,7 +218,7 @@ Name | Type | Description  | Notes
 
 # **safeTransferFrom**
 ```swift
-    open class func safeTransferFrom(name: String, authorization: String, erc1155Request: Erc1155Request, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func safeTransferFrom(name: String, authorization: String, erc1155Request: Erc1155Request, completion: @escaping (_ data: TransactionAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -254,7 +254,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**TransactionAPIResponse**](TransactionAPIResponse.md)
 
 ### Authorization
 
@@ -269,7 +269,7 @@ Name | Type | Description  | Notes
 
 # **setApprovalForAll**
 ```swift
-    open class func setApprovalForAll(name: String, authorization: String, erc1155Request: Erc1155Request, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func setApprovalForAll(name: String, authorization: String, erc1155Request: Erc1155Request, completion: @escaping (_ data: TransactionAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -305,7 +305,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**TransactionAPIResponse**](TransactionAPIResponse.md)
 
 ### Authorization
 

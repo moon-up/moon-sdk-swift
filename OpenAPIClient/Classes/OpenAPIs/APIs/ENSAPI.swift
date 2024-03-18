@@ -20,7 +20,7 @@ open class ENSAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func resolve(authorization: String, ensResolveInput: EnsResolveInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func resolve(authorization: String, ensResolveInput: EnsResolveInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: EnsResolveAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return resolveWithRequestBuilder(authorization: authorization, ensResolveInput: ensResolveInput).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -41,9 +41,9 @@ open class ENSAPI {
        - name: BearerAuth
      - parameter authorization: (header)  
      - parameter ensResolveInput: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<EnsResolveAPIResponse> 
      */
-    open class func resolveWithRequestBuilder(authorization: String, ensResolveInput: EnsResolveInput) -> RequestBuilder<AccountControllerResponse> {
+    open class func resolveWithRequestBuilder(authorization: String, ensResolveInput: EnsResolveInput) -> RequestBuilder<EnsResolveAPIResponse> {
         let localVariablePath = "/ens/resolve"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: ensResolveInput)
@@ -51,12 +51,13 @@ open class ENSAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<EnsResolveAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

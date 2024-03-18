@@ -21,7 +21,7 @@ open class Erc20API {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func allowanceErc20(authorization: String, name: String, inputBody: InputBody, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func allowanceErc20(authorization: String, name: String, inputBody: InputBody, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TransactionAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return allowanceErc20WithRequestBuilder(authorization: authorization, name: name, inputBody: inputBody).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -43,9 +43,9 @@ open class Erc20API {
      - parameter authorization: (header)  
      - parameter name: (path)  
      - parameter inputBody: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<TransactionAPIResponse> 
      */
-    open class func allowanceErc20WithRequestBuilder(authorization: String, name: String, inputBody: InputBody) -> RequestBuilder<AccountControllerResponse> {
+    open class func allowanceErc20WithRequestBuilder(authorization: String, name: String, inputBody: InputBody) -> RequestBuilder<TransactionAPIResponse> {
         var localVariablePath = "/erc20/{name}/allowance"
         let namePreEscape = "\(APIHelper.mapValueToPathItem(name))"
         let namePostEscape = namePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -56,12 +56,13 @@ open class Erc20API {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TransactionAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -75,7 +76,7 @@ open class Erc20API {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func approveErc20(authorization: String, name: String, inputBody: InputBody, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func approveErc20(authorization: String, name: String, inputBody: InputBody, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TransactionAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return approveErc20WithRequestBuilder(authorization: authorization, name: name, inputBody: inputBody).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -97,9 +98,9 @@ open class Erc20API {
      - parameter authorization: (header)  
      - parameter name: (path)  
      - parameter inputBody: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<TransactionAPIResponse> 
      */
-    open class func approveErc20WithRequestBuilder(authorization: String, name: String, inputBody: InputBody) -> RequestBuilder<AccountControllerResponse> {
+    open class func approveErc20WithRequestBuilder(authorization: String, name: String, inputBody: InputBody) -> RequestBuilder<TransactionAPIResponse> {
         var localVariablePath = "/erc20/{name}/approve"
         let namePreEscape = "\(APIHelper.mapValueToPathItem(name))"
         let namePostEscape = namePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -110,12 +111,13 @@ open class Erc20API {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TransactionAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -129,7 +131,7 @@ open class Erc20API {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func balanceOfErc20(authorization: String, name: String, inputBody: InputBody, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func balanceOfErc20(authorization: String, name: String, inputBody: InputBody, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TransactionAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return balanceOfErc20WithRequestBuilder(authorization: authorization, name: name, inputBody: inputBody).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -151,9 +153,9 @@ open class Erc20API {
      - parameter authorization: (header)  
      - parameter name: (path)  
      - parameter inputBody: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<TransactionAPIResponse> 
      */
-    open class func balanceOfErc20WithRequestBuilder(authorization: String, name: String, inputBody: InputBody) -> RequestBuilder<AccountControllerResponse> {
+    open class func balanceOfErc20WithRequestBuilder(authorization: String, name: String, inputBody: InputBody) -> RequestBuilder<TransactionAPIResponse> {
         var localVariablePath = "/erc20/{name}/balance-of"
         let namePreEscape = "\(APIHelper.mapValueToPathItem(name))"
         let namePostEscape = namePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -164,12 +166,13 @@ open class Erc20API {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TransactionAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -183,7 +186,7 @@ open class Erc20API {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func decimalsErc20(authorization: String, name: String, inputBody: InputBody, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func decimalsErc20(authorization: String, name: String, inputBody: InputBody, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TransactionAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return decimalsErc20WithRequestBuilder(authorization: authorization, name: name, inputBody: inputBody).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -205,9 +208,9 @@ open class Erc20API {
      - parameter authorization: (header)  
      - parameter name: (path)  
      - parameter inputBody: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<TransactionAPIResponse> 
      */
-    open class func decimalsErc20WithRequestBuilder(authorization: String, name: String, inputBody: InputBody) -> RequestBuilder<AccountControllerResponse> {
+    open class func decimalsErc20WithRequestBuilder(authorization: String, name: String, inputBody: InputBody) -> RequestBuilder<TransactionAPIResponse> {
         var localVariablePath = "/erc20/{name}/decimals"
         let namePreEscape = "\(APIHelper.mapValueToPathItem(name))"
         let namePostEscape = namePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -218,12 +221,13 @@ open class Erc20API {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TransactionAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -237,7 +241,7 @@ open class Erc20API {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func nameErc20(authorization: String, name: String, inputBody: InputBody, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func nameErc20(authorization: String, name: String, inputBody: InputBody, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TransactionAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return nameErc20WithRequestBuilder(authorization: authorization, name: name, inputBody: inputBody).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -259,9 +263,9 @@ open class Erc20API {
      - parameter authorization: (header)  
      - parameter name: (path)  
      - parameter inputBody: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<TransactionAPIResponse> 
      */
-    open class func nameErc20WithRequestBuilder(authorization: String, name: String, inputBody: InputBody) -> RequestBuilder<AccountControllerResponse> {
+    open class func nameErc20WithRequestBuilder(authorization: String, name: String, inputBody: InputBody) -> RequestBuilder<TransactionAPIResponse> {
         var localVariablePath = "/erc20/{name}/name"
         let namePreEscape = "\(APIHelper.mapValueToPathItem(name))"
         let namePostEscape = namePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -272,12 +276,13 @@ open class Erc20API {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TransactionAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -291,7 +296,7 @@ open class Erc20API {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func symbolErc20(authorization: String, name: String, inputBody: InputBody, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func symbolErc20(authorization: String, name: String, inputBody: InputBody, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TransactionAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return symbolErc20WithRequestBuilder(authorization: authorization, name: name, inputBody: inputBody).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -313,9 +318,9 @@ open class Erc20API {
      - parameter authorization: (header)  
      - parameter name: (path)  
      - parameter inputBody: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<TransactionAPIResponse> 
      */
-    open class func symbolErc20WithRequestBuilder(authorization: String, name: String, inputBody: InputBody) -> RequestBuilder<AccountControllerResponse> {
+    open class func symbolErc20WithRequestBuilder(authorization: String, name: String, inputBody: InputBody) -> RequestBuilder<TransactionAPIResponse> {
         var localVariablePath = "/erc20/{name}/symbol"
         let namePreEscape = "\(APIHelper.mapValueToPathItem(name))"
         let namePostEscape = namePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -326,12 +331,13 @@ open class Erc20API {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TransactionAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -345,7 +351,7 @@ open class Erc20API {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func totalSupplyErc20(authorization: String, name: String, inputBody: InputBody, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func totalSupplyErc20(authorization: String, name: String, inputBody: InputBody, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TransactionAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return totalSupplyErc20WithRequestBuilder(authorization: authorization, name: name, inputBody: inputBody).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -367,9 +373,9 @@ open class Erc20API {
      - parameter authorization: (header)  
      - parameter name: (path)  
      - parameter inputBody: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<TransactionAPIResponse> 
      */
-    open class func totalSupplyErc20WithRequestBuilder(authorization: String, name: String, inputBody: InputBody) -> RequestBuilder<AccountControllerResponse> {
+    open class func totalSupplyErc20WithRequestBuilder(authorization: String, name: String, inputBody: InputBody) -> RequestBuilder<TransactionAPIResponse> {
         var localVariablePath = "/erc20/{name}/total-supply"
         let namePreEscape = "\(APIHelper.mapValueToPathItem(name))"
         let namePostEscape = namePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -380,12 +386,13 @@ open class Erc20API {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TransactionAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -399,7 +406,7 @@ open class Erc20API {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func transferErc20(authorization: String, name: String, inputBody: InputBody, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func transferErc20(authorization: String, name: String, inputBody: InputBody, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TransactionAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return transferErc20WithRequestBuilder(authorization: authorization, name: name, inputBody: inputBody).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -421,9 +428,9 @@ open class Erc20API {
      - parameter authorization: (header)  
      - parameter name: (path)  
      - parameter inputBody: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<TransactionAPIResponse> 
      */
-    open class func transferErc20WithRequestBuilder(authorization: String, name: String, inputBody: InputBody) -> RequestBuilder<AccountControllerResponse> {
+    open class func transferErc20WithRequestBuilder(authorization: String, name: String, inputBody: InputBody) -> RequestBuilder<TransactionAPIResponse> {
         var localVariablePath = "/erc20/{name}/transfer"
         let namePreEscape = "\(APIHelper.mapValueToPathItem(name))"
         let namePostEscape = namePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -434,12 +441,13 @@ open class Erc20API {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TransactionAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -453,7 +461,7 @@ open class Erc20API {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func transferFromErc20(authorization: String, name: String, inputBody: InputBody, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func transferFromErc20(authorization: String, name: String, inputBody: InputBody, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TransactionAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return transferFromErc20WithRequestBuilder(authorization: authorization, name: name, inputBody: inputBody).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -475,9 +483,9 @@ open class Erc20API {
      - parameter authorization: (header)  
      - parameter name: (path)  
      - parameter inputBody: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<TransactionAPIResponse> 
      */
-    open class func transferFromErc20WithRequestBuilder(authorization: String, name: String, inputBody: InputBody) -> RequestBuilder<AccountControllerResponse> {
+    open class func transferFromErc20WithRequestBuilder(authorization: String, name: String, inputBody: InputBody) -> RequestBuilder<TransactionAPIResponse> {
         var localVariablePath = "/erc20/{name}/transfer-from"
         let namePreEscape = "\(APIHelper.mapValueToPathItem(name))"
         let namePostEscape = namePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -488,12 +496,13 @@ open class Erc20API {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TransactionAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

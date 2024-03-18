@@ -21,7 +21,7 @@ open class UniSwapAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func addLiquidity(authorization: String, name: String, uniswapInput: UniswapInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func addLiquidity(authorization: String, name: String, uniswapInput: UniswapInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TransactionAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return addLiquidityWithRequestBuilder(authorization: authorization, name: name, uniswapInput: uniswapInput).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -43,9 +43,9 @@ open class UniSwapAPI {
      - parameter authorization: (header)  
      - parameter name: (path)  
      - parameter uniswapInput: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<TransactionAPIResponse> 
      */
-    open class func addLiquidityWithRequestBuilder(authorization: String, name: String, uniswapInput: UniswapInput) -> RequestBuilder<AccountControllerResponse> {
+    open class func addLiquidityWithRequestBuilder(authorization: String, name: String, uniswapInput: UniswapInput) -> RequestBuilder<TransactionAPIResponse> {
         var localVariablePath = "/uniswap/{name}/add-liquidity"
         let namePreEscape = "\(APIHelper.mapValueToPathItem(name))"
         let namePostEscape = namePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -56,12 +56,13 @@ open class UniSwapAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TransactionAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -75,7 +76,7 @@ open class UniSwapAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func removeLiquidity(authorization: String, name: String, uniswapInput: UniswapInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func removeLiquidity(authorization: String, name: String, uniswapInput: UniswapInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TransactionAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return removeLiquidityWithRequestBuilder(authorization: authorization, name: name, uniswapInput: uniswapInput).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -97,9 +98,9 @@ open class UniSwapAPI {
      - parameter authorization: (header)  
      - parameter name: (path)  
      - parameter uniswapInput: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<TransactionAPIResponse> 
      */
-    open class func removeLiquidityWithRequestBuilder(authorization: String, name: String, uniswapInput: UniswapInput) -> RequestBuilder<AccountControllerResponse> {
+    open class func removeLiquidityWithRequestBuilder(authorization: String, name: String, uniswapInput: UniswapInput) -> RequestBuilder<TransactionAPIResponse> {
         var localVariablePath = "/uniswap/{name}/remove-liquidity"
         let namePreEscape = "\(APIHelper.mapValueToPathItem(name))"
         let namePostEscape = namePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -110,12 +111,13 @@ open class UniSwapAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TransactionAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -129,7 +131,7 @@ open class UniSwapAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func swapExactETHForTokens(authorization: String, name: String, uniswapInput: UniswapInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func swapExactETHForTokens(authorization: String, name: String, uniswapInput: UniswapInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TransactionAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return swapExactETHForTokensWithRequestBuilder(authorization: authorization, name: name, uniswapInput: uniswapInput).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -151,9 +153,9 @@ open class UniSwapAPI {
      - parameter authorization: (header)  
      - parameter name: (path)  
      - parameter uniswapInput: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<TransactionAPIResponse> 
      */
-    open class func swapExactETHForTokensWithRequestBuilder(authorization: String, name: String, uniswapInput: UniswapInput) -> RequestBuilder<AccountControllerResponse> {
+    open class func swapExactETHForTokensWithRequestBuilder(authorization: String, name: String, uniswapInput: UniswapInput) -> RequestBuilder<TransactionAPIResponse> {
         var localVariablePath = "/uniswap/{name}/swap-exact-eth-for-tokens"
         let namePreEscape = "\(APIHelper.mapValueToPathItem(name))"
         let namePostEscape = namePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -164,12 +166,13 @@ open class UniSwapAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TransactionAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -183,7 +186,7 @@ open class UniSwapAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func swapExactTokensForTokens(authorization: String, name: String, uniswapInput: UniswapInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func swapExactTokensForTokens(authorization: String, name: String, uniswapInput: UniswapInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TransactionAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return swapExactTokensForTokensWithRequestBuilder(authorization: authorization, name: name, uniswapInput: uniswapInput).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -205,9 +208,9 @@ open class UniSwapAPI {
      - parameter authorization: (header)  
      - parameter name: (path)  
      - parameter uniswapInput: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<TransactionAPIResponse> 
      */
-    open class func swapExactTokensForTokensWithRequestBuilder(authorization: String, name: String, uniswapInput: UniswapInput) -> RequestBuilder<AccountControllerResponse> {
+    open class func swapExactTokensForTokensWithRequestBuilder(authorization: String, name: String, uniswapInput: UniswapInput) -> RequestBuilder<TransactionAPIResponse> {
         var localVariablePath = "/uniswap/{name}/swap-exact-tokens-for-tokens"
         let namePreEscape = "\(APIHelper.mapValueToPathItem(name))"
         let namePostEscape = namePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -218,12 +221,13 @@ open class UniSwapAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TransactionAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

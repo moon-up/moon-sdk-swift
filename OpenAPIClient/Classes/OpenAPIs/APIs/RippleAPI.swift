@@ -20,7 +20,7 @@ open class RippleAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func createRippleAccount(authorization: String, rippleInput: RippleInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func createRippleAccount(authorization: String, rippleInput: RippleInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return createRippleAccountWithRequestBuilder(authorization: authorization, rippleInput: rippleInput).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -41,9 +41,9 @@ open class RippleAPI {
        - name: BearerAuth
      - parameter authorization: (header)  
      - parameter rippleInput: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<AccountAPIResponse> 
      */
-    open class func createRippleAccountWithRequestBuilder(authorization: String, rippleInput: RippleInput) -> RequestBuilder<AccountControllerResponse> {
+    open class func createRippleAccountWithRequestBuilder(authorization: String, rippleInput: RippleInput) -> RequestBuilder<AccountAPIResponse> {
         let localVariablePath = "/ripple"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: rippleInput)
@@ -51,12 +51,13 @@ open class RippleAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<AccountAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -69,7 +70,7 @@ open class RippleAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getRippleAccount(authorization: String, accountName: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getRippleAccount(authorization: String, accountName: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return getRippleAccountWithRequestBuilder(authorization: authorization, accountName: accountName).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -90,9 +91,9 @@ open class RippleAPI {
        - name: BearerAuth
      - parameter authorization: (header)  
      - parameter accountName: (path)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<AccountAPIResponse> 
      */
-    open class func getRippleAccountWithRequestBuilder(authorization: String, accountName: String) -> RequestBuilder<AccountControllerResponse> {
+    open class func getRippleAccountWithRequestBuilder(authorization: String, accountName: String) -> RequestBuilder<AccountAPIResponse> {
         var localVariablePath = "/ripple/{accountName}"
         let accountNamePreEscape = "\(APIHelper.mapValueToPathItem(accountName))"
         let accountNamePostEscape = accountNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -108,7 +109,7 @@ open class RippleAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<AccountAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -120,7 +121,7 @@ open class RippleAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func listRippleAccounts(authorization: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func listRippleAccounts(authorization: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return listRippleAccountsWithRequestBuilder(authorization: authorization).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -140,9 +141,9 @@ open class RippleAPI {
        - type: apiKey Authorization (HEADER)
        - name: BearerAuth
      - parameter authorization: (header)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<AccountAPIResponse> 
      */
-    open class func listRippleAccountsWithRequestBuilder(authorization: String) -> RequestBuilder<AccountControllerResponse> {
+    open class func listRippleAccountsWithRequestBuilder(authorization: String) -> RequestBuilder<AccountAPIResponse> {
         let localVariablePath = "/ripple"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -155,7 +156,7 @@ open class RippleAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<AccountAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -169,7 +170,7 @@ open class RippleAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func signRippleTransaction(authorization: String, accountName: String, rippleTransactionInput: RippleTransactionInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func signRippleTransaction(authorization: String, accountName: String, rippleTransactionInput: RippleTransactionInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: RippleAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return signRippleTransactionWithRequestBuilder(authorization: authorization, accountName: accountName, rippleTransactionInput: rippleTransactionInput).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -191,9 +192,9 @@ open class RippleAPI {
      - parameter authorization: (header)  
      - parameter accountName: (path)  
      - parameter rippleTransactionInput: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<RippleAPIResponse> 
      */
-    open class func signRippleTransactionWithRequestBuilder(authorization: String, accountName: String, rippleTransactionInput: RippleTransactionInput) -> RequestBuilder<AccountControllerResponse> {
+    open class func signRippleTransactionWithRequestBuilder(authorization: String, accountName: String, rippleTransactionInput: RippleTransactionInput) -> RequestBuilder<RippleAPIResponse> {
         var localVariablePath = "/ripple/{accountName}/sign-tx"
         let accountNamePreEscape = "\(APIHelper.mapValueToPathItem(accountName))"
         let accountNamePostEscape = accountNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -204,12 +205,13 @@ open class RippleAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<RippleAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

@@ -20,7 +20,7 @@ open class CosmosAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func createCosmosAccount(authorization: String, cosmosInput: CosmosInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func createCosmosAccount(authorization: String, cosmosInput: CosmosInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return createCosmosAccountWithRequestBuilder(authorization: authorization, cosmosInput: cosmosInput).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -41,9 +41,9 @@ open class CosmosAPI {
        - name: BearerAuth
      - parameter authorization: (header)  
      - parameter cosmosInput: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<AccountAPIResponse> 
      */
-    open class func createCosmosAccountWithRequestBuilder(authorization: String, cosmosInput: CosmosInput) -> RequestBuilder<AccountControllerResponse> {
+    open class func createCosmosAccountWithRequestBuilder(authorization: String, cosmosInput: CosmosInput) -> RequestBuilder<AccountAPIResponse> {
         let localVariablePath = "/cosmos"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: cosmosInput)
@@ -51,12 +51,13 @@ open class CosmosAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<AccountAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -69,7 +70,7 @@ open class CosmosAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getCosmosAccount(authorization: String, accountName: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getCosmosAccount(authorization: String, accountName: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return getCosmosAccountWithRequestBuilder(authorization: authorization, accountName: accountName).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -90,9 +91,9 @@ open class CosmosAPI {
        - name: BearerAuth
      - parameter authorization: (header)  
      - parameter accountName: (path)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<AccountAPIResponse> 
      */
-    open class func getCosmosAccountWithRequestBuilder(authorization: String, accountName: String) -> RequestBuilder<AccountControllerResponse> {
+    open class func getCosmosAccountWithRequestBuilder(authorization: String, accountName: String) -> RequestBuilder<AccountAPIResponse> {
         var localVariablePath = "/cosmos/{accountName}"
         let accountNamePreEscape = "\(APIHelper.mapValueToPathItem(accountName))"
         let accountNamePostEscape = accountNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -108,7 +109,7 @@ open class CosmosAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<AccountAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -120,7 +121,7 @@ open class CosmosAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func listCosmosAccounts(authorization: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func listCosmosAccounts(authorization: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return listCosmosAccountsWithRequestBuilder(authorization: authorization).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -140,9 +141,9 @@ open class CosmosAPI {
        - type: apiKey Authorization (HEADER)
        - name: BearerAuth
      - parameter authorization: (header)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<AccountAPIResponse> 
      */
-    open class func listCosmosAccountsWithRequestBuilder(authorization: String) -> RequestBuilder<AccountControllerResponse> {
+    open class func listCosmosAccountsWithRequestBuilder(authorization: String) -> RequestBuilder<AccountAPIResponse> {
         let localVariablePath = "/cosmos"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -155,7 +156,7 @@ open class CosmosAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<AccountAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -169,7 +170,7 @@ open class CosmosAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func signCosmosTransaction(authorization: String, accountName: String, cosmosTransactionInput: CosmosTransactionInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func signCosmosTransaction(authorization: String, accountName: String, cosmosTransactionInput: CosmosTransactionInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CosmosAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return signCosmosTransactionWithRequestBuilder(authorization: authorization, accountName: accountName, cosmosTransactionInput: cosmosTransactionInput).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -191,9 +192,9 @@ open class CosmosAPI {
      - parameter authorization: (header)  
      - parameter accountName: (path)  
      - parameter cosmosTransactionInput: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<CosmosAPIResponse> 
      */
-    open class func signCosmosTransactionWithRequestBuilder(authorization: String, accountName: String, cosmosTransactionInput: CosmosTransactionInput) -> RequestBuilder<AccountControllerResponse> {
+    open class func signCosmosTransactionWithRequestBuilder(authorization: String, accountName: String, cosmosTransactionInput: CosmosTransactionInput) -> RequestBuilder<CosmosAPIResponse> {
         var localVariablePath = "/cosmos/{accountName}/sign-tx"
         let accountNamePreEscape = "\(APIHelper.mapValueToPathItem(accountName))"
         let accountNamePostEscape = accountNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -204,12 +205,13 @@ open class CosmosAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<CosmosAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

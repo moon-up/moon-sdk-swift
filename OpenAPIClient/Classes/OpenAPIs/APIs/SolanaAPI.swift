@@ -20,7 +20,7 @@ open class SolanaAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func createSolanaAccount(authorization: String, solanaInput: SolanaInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func createSolanaAccount(authorization: String, solanaInput: SolanaInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return createSolanaAccountWithRequestBuilder(authorization: authorization, solanaInput: solanaInput).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -41,9 +41,9 @@ open class SolanaAPI {
        - name: BearerAuth
      - parameter authorization: (header)  
      - parameter solanaInput: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<AccountAPIResponse> 
      */
-    open class func createSolanaAccountWithRequestBuilder(authorization: String, solanaInput: SolanaInput) -> RequestBuilder<AccountControllerResponse> {
+    open class func createSolanaAccountWithRequestBuilder(authorization: String, solanaInput: SolanaInput) -> RequestBuilder<AccountAPIResponse> {
         let localVariablePath = "/solana"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: solanaInput)
@@ -51,12 +51,13 @@ open class SolanaAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<AccountAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -69,7 +70,7 @@ open class SolanaAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getSolanaAccount(authorization: String, accountName: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getSolanaAccount(authorization: String, accountName: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return getSolanaAccountWithRequestBuilder(authorization: authorization, accountName: accountName).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -90,9 +91,9 @@ open class SolanaAPI {
        - name: BearerAuth
      - parameter authorization: (header)  
      - parameter accountName: (path)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<AccountAPIResponse> 
      */
-    open class func getSolanaAccountWithRequestBuilder(authorization: String, accountName: String) -> RequestBuilder<AccountControllerResponse> {
+    open class func getSolanaAccountWithRequestBuilder(authorization: String, accountName: String) -> RequestBuilder<AccountAPIResponse> {
         var localVariablePath = "/solana/{accountName}"
         let accountNamePreEscape = "\(APIHelper.mapValueToPathItem(accountName))"
         let accountNamePostEscape = accountNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -108,7 +109,7 @@ open class SolanaAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<AccountAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -120,7 +121,7 @@ open class SolanaAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func listSolanaAccounts(authorization: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func listSolanaAccounts(authorization: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return listSolanaAccountsWithRequestBuilder(authorization: authorization).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -140,9 +141,9 @@ open class SolanaAPI {
        - type: apiKey Authorization (HEADER)
        - name: BearerAuth
      - parameter authorization: (header)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<AccountAPIResponse> 
      */
-    open class func listSolanaAccountsWithRequestBuilder(authorization: String) -> RequestBuilder<AccountControllerResponse> {
+    open class func listSolanaAccountsWithRequestBuilder(authorization: String) -> RequestBuilder<AccountAPIResponse> {
         let localVariablePath = "/solana"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -155,7 +156,7 @@ open class SolanaAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<AccountAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -169,7 +170,7 @@ open class SolanaAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func signSolanaTransaction(authorization: String, accountName: String, solanaTransactionInput: SolanaTransactionInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func signSolanaTransaction(authorization: String, accountName: String, solanaTransactionInput: SolanaTransactionInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: SolanaAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return signSolanaTransactionWithRequestBuilder(authorization: authorization, accountName: accountName, solanaTransactionInput: solanaTransactionInput).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -191,9 +192,9 @@ open class SolanaAPI {
      - parameter authorization: (header)  
      - parameter accountName: (path)  
      - parameter solanaTransactionInput: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<SolanaAPIResponse> 
      */
-    open class func signSolanaTransactionWithRequestBuilder(authorization: String, accountName: String, solanaTransactionInput: SolanaTransactionInput) -> RequestBuilder<AccountControllerResponse> {
+    open class func signSolanaTransactionWithRequestBuilder(authorization: String, accountName: String, solanaTransactionInput: SolanaTransactionInput) -> RequestBuilder<SolanaAPIResponse> {
         var localVariablePath = "/solana/{accountName}/sign-tx"
         let accountNamePreEscape = "\(APIHelper.mapValueToPathItem(accountName))"
         let accountNamePostEscape = accountNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -204,12 +205,13 @@ open class SolanaAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<SolanaAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

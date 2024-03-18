@@ -1,6 +1,6 @@
 # YearnAPI
 
-All URIs are relative to *https://vault-api.usemoon.ai*
+All URIs are relative to *https://moon-vault-api-git-ew-supabase-migration-moonup.vercel.app*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 # **addLiquidity**
 ```swift
-    open class func addLiquidity(authorization: String, name: String, inputBody: InputBody, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func addLiquidity(authorization: String, name: String, inputBody: InputBody, completion: @escaping (_ data: TransactionAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -48,7 +48,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**TransactionAPIResponse**](TransactionAPIResponse.md)
 
 ### Authorization
 
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 
 # **addLiquidityWeth**
 ```swift
-    open class func addLiquidityWeth(authorization: String, name: String, inputBody: InputBody, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func addLiquidityWeth(authorization: String, name: String, inputBody: InputBody, completion: @escaping (_ data: TransactionAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**TransactionAPIResponse**](TransactionAPIResponse.md)
 
 ### Authorization
 
@@ -114,7 +114,7 @@ Name | Type | Description  | Notes
 
 # **removeLiquidity**
 ```swift
-    open class func removeLiquidity(authorization: String, name: String, inputBody: InputBody, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func removeLiquidity(authorization: String, name: String, inputBody: InputBody, completion: @escaping (_ data: TransactionAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**TransactionAPIResponse**](TransactionAPIResponse.md)
 
 ### Authorization
 
@@ -165,7 +165,7 @@ Name | Type | Description  | Notes
 
 # **removeLiquidityWeth**
 ```swift
-    open class func removeLiquidityWeth(authorization: String, name: String, inputBody: InputBody, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func removeLiquidityWeth(authorization: String, name: String, inputBody: InputBody, completion: @escaping (_ data: TransactionAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**TransactionAPIResponse**](TransactionAPIResponse.md)
 
 ### Authorization
 

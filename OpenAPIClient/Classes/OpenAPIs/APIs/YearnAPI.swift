@@ -21,7 +21,7 @@ open class YearnAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func addLiquidity(authorization: String, name: String, inputBody: InputBody, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func addLiquidity(authorization: String, name: String, inputBody: InputBody, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TransactionAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return addLiquidityWithRequestBuilder(authorization: authorization, name: name, inputBody: inputBody).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -43,9 +43,9 @@ open class YearnAPI {
      - parameter authorization: (header)  
      - parameter name: (path)  
      - parameter inputBody: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<TransactionAPIResponse> 
      */
-    open class func addLiquidityWithRequestBuilder(authorization: String, name: String, inputBody: InputBody) -> RequestBuilder<AccountControllerResponse> {
+    open class func addLiquidityWithRequestBuilder(authorization: String, name: String, inputBody: InputBody) -> RequestBuilder<TransactionAPIResponse> {
         var localVariablePath = "/yearn/{name}/add-liquidity"
         let namePreEscape = "\(APIHelper.mapValueToPathItem(name))"
         let namePostEscape = namePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -56,12 +56,13 @@ open class YearnAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TransactionAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -75,7 +76,7 @@ open class YearnAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func addLiquidityWeth(authorization: String, name: String, inputBody: InputBody, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func addLiquidityWeth(authorization: String, name: String, inputBody: InputBody, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TransactionAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return addLiquidityWethWithRequestBuilder(authorization: authorization, name: name, inputBody: inputBody).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -97,9 +98,9 @@ open class YearnAPI {
      - parameter authorization: (header)  
      - parameter name: (path)  
      - parameter inputBody: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<TransactionAPIResponse> 
      */
-    open class func addLiquidityWethWithRequestBuilder(authorization: String, name: String, inputBody: InputBody) -> RequestBuilder<AccountControllerResponse> {
+    open class func addLiquidityWethWithRequestBuilder(authorization: String, name: String, inputBody: InputBody) -> RequestBuilder<TransactionAPIResponse> {
         var localVariablePath = "/yearn/{name}/add-liquidity-weth"
         let namePreEscape = "\(APIHelper.mapValueToPathItem(name))"
         let namePostEscape = namePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -110,12 +111,13 @@ open class YearnAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TransactionAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -129,7 +131,7 @@ open class YearnAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func removeLiquidity(authorization: String, name: String, inputBody: InputBody, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func removeLiquidity(authorization: String, name: String, inputBody: InputBody, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TransactionAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return removeLiquidityWithRequestBuilder(authorization: authorization, name: name, inputBody: inputBody).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -151,9 +153,9 @@ open class YearnAPI {
      - parameter authorization: (header)  
      - parameter name: (path)  
      - parameter inputBody: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<TransactionAPIResponse> 
      */
-    open class func removeLiquidityWithRequestBuilder(authorization: String, name: String, inputBody: InputBody) -> RequestBuilder<AccountControllerResponse> {
+    open class func removeLiquidityWithRequestBuilder(authorization: String, name: String, inputBody: InputBody) -> RequestBuilder<TransactionAPIResponse> {
         var localVariablePath = "/yearn/{name}/remove-liquidity"
         let namePreEscape = "\(APIHelper.mapValueToPathItem(name))"
         let namePostEscape = namePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -164,12 +166,13 @@ open class YearnAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TransactionAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -183,7 +186,7 @@ open class YearnAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func removeLiquidityWeth(authorization: String, name: String, inputBody: InputBody, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func removeLiquidityWeth(authorization: String, name: String, inputBody: InputBody, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TransactionAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return removeLiquidityWethWithRequestBuilder(authorization: authorization, name: name, inputBody: inputBody).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -205,9 +208,9 @@ open class YearnAPI {
      - parameter authorization: (header)  
      - parameter name: (path)  
      - parameter inputBody: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<TransactionAPIResponse> 
      */
-    open class func removeLiquidityWethWithRequestBuilder(authorization: String, name: String, inputBody: InputBody) -> RequestBuilder<AccountControllerResponse> {
+    open class func removeLiquidityWethWithRequestBuilder(authorization: String, name: String, inputBody: InputBody) -> RequestBuilder<TransactionAPIResponse> {
         var localVariablePath = "/yearn/{name}/remove-liquidity-weth"
         let namePreEscape = "\(APIHelper.mapValueToPathItem(name))"
         let namePostEscape = namePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -218,12 +221,13 @@ open class YearnAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TransactionAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

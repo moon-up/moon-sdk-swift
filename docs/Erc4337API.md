@@ -1,6 +1,6 @@
 # Erc4337API
 
-All URIs are relative to *https://vault-api.usemoon.ai*
+All URIs are relative to *https://moon-vault-api-git-ew-supabase-migration-moonup.vercel.app*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 # **getAddress**
 ```swift
-    open class func getAddress(authorization: String, accountName: String, inputBody: InputBody, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func getAddress(authorization: String, accountName: String, inputBody: InputBody, completion: @escaping (_ data: AccountAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -46,7 +46,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**AccountAPIResponse**](AccountAPIResponse.md)
 
 ### Authorization
 
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 
 # **signBroadcastUserOpTx**
 ```swift
-    open class func signBroadcastUserOpTx(authorization: String, accountName: String, inputBody: InputBody, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func signBroadcastUserOpTx(authorization: String, accountName: String, inputBody: InputBody, completion: @escaping (_ data: TransactionAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -97,7 +97,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**TransactionAPIResponse**](TransactionAPIResponse.md)
 
 ### Authorization
 

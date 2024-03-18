@@ -21,7 +21,7 @@ open class ERC1155API {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func balanceOf(name: String, authorization: String, erc1155Request: Erc1155Request, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func balanceOf(name: String, authorization: String, erc1155Request: Erc1155Request, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TransactionAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return balanceOfWithRequestBuilder(name: name, authorization: authorization, erc1155Request: erc1155Request).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -43,9 +43,9 @@ open class ERC1155API {
      - parameter name: (path)  
      - parameter authorization: (header)  
      - parameter erc1155Request: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<TransactionAPIResponse> 
      */
-    open class func balanceOfWithRequestBuilder(name: String, authorization: String, erc1155Request: Erc1155Request) -> RequestBuilder<AccountControllerResponse> {
+    open class func balanceOfWithRequestBuilder(name: String, authorization: String, erc1155Request: Erc1155Request) -> RequestBuilder<TransactionAPIResponse> {
         var localVariablePath = "/erc1155/{name}/balance-of"
         let namePreEscape = "\(APIHelper.mapValueToPathItem(name))"
         let namePostEscape = namePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -56,12 +56,13 @@ open class ERC1155API {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TransactionAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -75,7 +76,7 @@ open class ERC1155API {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func balanceOfBatch(name: String, authorization: String, erc1155Request: Erc1155Request, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func balanceOfBatch(name: String, authorization: String, erc1155Request: Erc1155Request, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TransactionAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return balanceOfBatchWithRequestBuilder(name: name, authorization: authorization, erc1155Request: erc1155Request).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -97,9 +98,9 @@ open class ERC1155API {
      - parameter name: (path)  
      - parameter authorization: (header)  
      - parameter erc1155Request: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<TransactionAPIResponse> 
      */
-    open class func balanceOfBatchWithRequestBuilder(name: String, authorization: String, erc1155Request: Erc1155Request) -> RequestBuilder<AccountControllerResponse> {
+    open class func balanceOfBatchWithRequestBuilder(name: String, authorization: String, erc1155Request: Erc1155Request) -> RequestBuilder<TransactionAPIResponse> {
         var localVariablePath = "/erc1155/{name}/balance-of-batch"
         let namePreEscape = "\(APIHelper.mapValueToPathItem(name))"
         let namePostEscape = namePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -110,12 +111,13 @@ open class ERC1155API {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TransactionAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -129,7 +131,7 @@ open class ERC1155API {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func isApprovedForAll(name: String, authorization: String, erc1155Request: Erc1155Request, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func isApprovedForAll(name: String, authorization: String, erc1155Request: Erc1155Request, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TransactionAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return isApprovedForAllWithRequestBuilder(name: name, authorization: authorization, erc1155Request: erc1155Request).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -151,9 +153,9 @@ open class ERC1155API {
      - parameter name: (path)  
      - parameter authorization: (header)  
      - parameter erc1155Request: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<TransactionAPIResponse> 
      */
-    open class func isApprovedForAllWithRequestBuilder(name: String, authorization: String, erc1155Request: Erc1155Request) -> RequestBuilder<AccountControllerResponse> {
+    open class func isApprovedForAllWithRequestBuilder(name: String, authorization: String, erc1155Request: Erc1155Request) -> RequestBuilder<TransactionAPIResponse> {
         var localVariablePath = "/erc1155/{name}/is-approved-for-all"
         let namePreEscape = "\(APIHelper.mapValueToPathItem(name))"
         let namePostEscape = namePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -164,12 +166,13 @@ open class ERC1155API {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TransactionAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -183,7 +186,7 @@ open class ERC1155API {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func safeBatchTransferFrom(name: String, authorization: String, erc1155Request: Erc1155Request, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func safeBatchTransferFrom(name: String, authorization: String, erc1155Request: Erc1155Request, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TransactionAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return safeBatchTransferFromWithRequestBuilder(name: name, authorization: authorization, erc1155Request: erc1155Request).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -205,9 +208,9 @@ open class ERC1155API {
      - parameter name: (path)  
      - parameter authorization: (header)  
      - parameter erc1155Request: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<TransactionAPIResponse> 
      */
-    open class func safeBatchTransferFromWithRequestBuilder(name: String, authorization: String, erc1155Request: Erc1155Request) -> RequestBuilder<AccountControllerResponse> {
+    open class func safeBatchTransferFromWithRequestBuilder(name: String, authorization: String, erc1155Request: Erc1155Request) -> RequestBuilder<TransactionAPIResponse> {
         var localVariablePath = "/erc1155/{name}/safe-batch-transfer-from"
         let namePreEscape = "\(APIHelper.mapValueToPathItem(name))"
         let namePostEscape = namePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -218,12 +221,13 @@ open class ERC1155API {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TransactionAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -237,7 +241,7 @@ open class ERC1155API {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func safeTransferFrom(name: String, authorization: String, erc1155Request: Erc1155Request, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func safeTransferFrom(name: String, authorization: String, erc1155Request: Erc1155Request, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TransactionAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return safeTransferFromWithRequestBuilder(name: name, authorization: authorization, erc1155Request: erc1155Request).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -259,9 +263,9 @@ open class ERC1155API {
      - parameter name: (path)  
      - parameter authorization: (header)  
      - parameter erc1155Request: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<TransactionAPIResponse> 
      */
-    open class func safeTransferFromWithRequestBuilder(name: String, authorization: String, erc1155Request: Erc1155Request) -> RequestBuilder<AccountControllerResponse> {
+    open class func safeTransferFromWithRequestBuilder(name: String, authorization: String, erc1155Request: Erc1155Request) -> RequestBuilder<TransactionAPIResponse> {
         var localVariablePath = "/erc1155/{name}/safe-transfer-from"
         let namePreEscape = "\(APIHelper.mapValueToPathItem(name))"
         let namePostEscape = namePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -272,12 +276,13 @@ open class ERC1155API {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TransactionAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -291,7 +296,7 @@ open class ERC1155API {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func setApprovalForAll(name: String, authorization: String, erc1155Request: Erc1155Request, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func setApprovalForAll(name: String, authorization: String, erc1155Request: Erc1155Request, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TransactionAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return setApprovalForAllWithRequestBuilder(name: name, authorization: authorization, erc1155Request: erc1155Request).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -313,9 +318,9 @@ open class ERC1155API {
      - parameter name: (path)  
      - parameter authorization: (header)  
      - parameter erc1155Request: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<TransactionAPIResponse> 
      */
-    open class func setApprovalForAllWithRequestBuilder(name: String, authorization: String, erc1155Request: Erc1155Request) -> RequestBuilder<AccountControllerResponse> {
+    open class func setApprovalForAllWithRequestBuilder(name: String, authorization: String, erc1155Request: Erc1155Request) -> RequestBuilder<TransactionAPIResponse> {
         var localVariablePath = "/erc1155/{name}/set-approval-for-all"
         let namePreEscape = "\(APIHelper.mapValueToPathItem(name))"
         let namePostEscape = namePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -326,12 +331,13 @@ open class ERC1155API {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TransactionAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

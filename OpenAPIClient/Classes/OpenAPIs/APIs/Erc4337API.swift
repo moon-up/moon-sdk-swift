@@ -21,7 +21,7 @@ open class Erc4337API {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getAddress(authorization: String, accountName: String, inputBody: InputBody, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getAddress(authorization: String, accountName: String, inputBody: InputBody, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return getAddressWithRequestBuilder(authorization: authorization, accountName: accountName, inputBody: inputBody).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -43,9 +43,9 @@ open class Erc4337API {
      - parameter authorization: (header)  
      - parameter accountName: (path)  
      - parameter inputBody: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<AccountAPIResponse> 
      */
-    open class func getAddressWithRequestBuilder(authorization: String, accountName: String, inputBody: InputBody) -> RequestBuilder<AccountControllerResponse> {
+    open class func getAddressWithRequestBuilder(authorization: String, accountName: String, inputBody: InputBody) -> RequestBuilder<AccountAPIResponse> {
         var localVariablePath = "/erc4337/{accountName}/address"
         let accountNamePreEscape = "\(APIHelper.mapValueToPathItem(accountName))"
         let accountNamePostEscape = accountNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -56,12 +56,13 @@ open class Erc4337API {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<AccountAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -75,7 +76,7 @@ open class Erc4337API {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func signBroadcastUserOpTx(authorization: String, accountName: String, inputBody: InputBody, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func signBroadcastUserOpTx(authorization: String, accountName: String, inputBody: InputBody, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TransactionAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return signBroadcastUserOpTxWithRequestBuilder(authorization: authorization, accountName: accountName, inputBody: inputBody).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -97,9 +98,9 @@ open class Erc4337API {
      - parameter authorization: (header)  
      - parameter accountName: (path)  
      - parameter inputBody: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<TransactionAPIResponse> 
      */
-    open class func signBroadcastUserOpTxWithRequestBuilder(authorization: String, accountName: String, inputBody: InputBody) -> RequestBuilder<AccountControllerResponse> {
+    open class func signBroadcastUserOpTxWithRequestBuilder(authorization: String, accountName: String, inputBody: InputBody) -> RequestBuilder<TransactionAPIResponse> {
         var localVariablePath = "/erc4337/{accountName}/sign-broadcast-userop-tx"
         let accountNamePreEscape = "\(APIHelper.mapValueToPathItem(accountName))"
         let accountNamePostEscape = accountNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -110,12 +111,13 @@ open class Erc4337API {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TransactionAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

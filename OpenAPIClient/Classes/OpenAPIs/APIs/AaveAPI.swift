@@ -21,7 +21,7 @@ open class AaveAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func borrow(authorization: String, name: String, aaveInput: AaveInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func borrow(authorization: String, name: String, aaveInput: AaveInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TransactionAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return borrowWithRequestBuilder(authorization: authorization, name: name, aaveInput: aaveInput).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -43,9 +43,9 @@ open class AaveAPI {
      - parameter authorization: (header)  
      - parameter name: (path)  
      - parameter aaveInput: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<TransactionAPIResponse> 
      */
-    open class func borrowWithRequestBuilder(authorization: String, name: String, aaveInput: AaveInput) -> RequestBuilder<AccountControllerResponse> {
+    open class func borrowWithRequestBuilder(authorization: String, name: String, aaveInput: AaveInput) -> RequestBuilder<TransactionAPIResponse> {
         var localVariablePath = "/aave/{name}/borrow"
         let namePreEscape = "\(APIHelper.mapValueToPathItem(name))"
         let namePostEscape = namePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -56,12 +56,13 @@ open class AaveAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TransactionAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -75,7 +76,7 @@ open class AaveAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func lend(authorization: String, name: String, aaveInput: AaveInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func lend(authorization: String, name: String, aaveInput: AaveInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TransactionAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return lendWithRequestBuilder(authorization: authorization, name: name, aaveInput: aaveInput).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -97,9 +98,9 @@ open class AaveAPI {
      - parameter authorization: (header)  
      - parameter name: (path)  
      - parameter aaveInput: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<TransactionAPIResponse> 
      */
-    open class func lendWithRequestBuilder(authorization: String, name: String, aaveInput: AaveInput) -> RequestBuilder<AccountControllerResponse> {
+    open class func lendWithRequestBuilder(authorization: String, name: String, aaveInput: AaveInput) -> RequestBuilder<TransactionAPIResponse> {
         var localVariablePath = "/aave/{name}/lend"
         let namePreEscape = "\(APIHelper.mapValueToPathItem(name))"
         let namePostEscape = namePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -110,12 +111,13 @@ open class AaveAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TransactionAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -129,7 +131,7 @@ open class AaveAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func repay(authorization: String, name: String, aaveInput: AaveInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func repay(authorization: String, name: String, aaveInput: AaveInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TransactionAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return repayWithRequestBuilder(authorization: authorization, name: name, aaveInput: aaveInput).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -151,9 +153,9 @@ open class AaveAPI {
      - parameter authorization: (header)  
      - parameter name: (path)  
      - parameter aaveInput: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<TransactionAPIResponse> 
      */
-    open class func repayWithRequestBuilder(authorization: String, name: String, aaveInput: AaveInput) -> RequestBuilder<AccountControllerResponse> {
+    open class func repayWithRequestBuilder(authorization: String, name: String, aaveInput: AaveInput) -> RequestBuilder<TransactionAPIResponse> {
         var localVariablePath = "/aave/{name}/repay"
         let namePreEscape = "\(APIHelper.mapValueToPathItem(name))"
         let namePostEscape = namePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -164,12 +166,13 @@ open class AaveAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TransactionAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -183,7 +186,7 @@ open class AaveAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func userReserveData(authorization: String, name: String, aaveInput: AaveInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AccountControllerResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func userReserveData(authorization: String, name: String, aaveInput: AaveInput, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: AaveReservesAPIResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return userReserveDataWithRequestBuilder(authorization: authorization, name: name, aaveInput: aaveInput).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -205,9 +208,9 @@ open class AaveAPI {
      - parameter authorization: (header)  
      - parameter name: (path)  
      - parameter aaveInput: (body)  
-     - returns: RequestBuilder<AccountControllerResponse> 
+     - returns: RequestBuilder<AaveReservesAPIResponse> 
      */
-    open class func userReserveDataWithRequestBuilder(authorization: String, name: String, aaveInput: AaveInput) -> RequestBuilder<AccountControllerResponse> {
+    open class func userReserveDataWithRequestBuilder(authorization: String, name: String, aaveInput: AaveInput) -> RequestBuilder<AaveReservesAPIResponse> {
         var localVariablePath = "/aave/{name}/user-reserve-data"
         let namePreEscape = "\(APIHelper.mapValueToPathItem(name))"
         let namePostEscape = namePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -218,12 +221,13 @@ open class AaveAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
             "Authorization": authorization.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountControllerResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<AaveReservesAPIResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

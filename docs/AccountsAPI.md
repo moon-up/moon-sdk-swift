@@ -1,6 +1,6 @@
 # AccountsAPI
 
-All URIs are relative to *https://vault-api.usemoon.ai*
+All URIs are relative to *https://moon-vault-api-git-ew-supabase-migration-moonup.vercel.app*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 # **broadcastTx**
 ```swift
-    open class func broadcastTx(authorization: String, accountName: String, broadcastInput: BroadcastInput, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func broadcastTx(authorization: String, accountName: String, broadcastInput: BroadcastInput, completion: @escaping (_ data: BroadCastRawTransactionAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**BroadCastRawTransactionAPIResponse**](BroadCastRawTransactionAPIResponse.md)
 
 ### Authorization
 
@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 
 # **createAccount**
 ```swift
-    open class func createAccount(authorization: String, createAccountInput: CreateAccountInput, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func createAccount(authorization: String, createAccountInput: CreateAccountInput, completion: @escaping (_ data: AccountAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -105,7 +105,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**AccountAPIResponse**](AccountAPIResponse.md)
 
 ### Authorization
 
@@ -120,7 +120,7 @@ Name | Type | Description  | Notes
 
 # **deleteAccount**
 ```swift
-    open class func deleteAccount(authorization: String, accountName: String, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func deleteAccount(authorization: String, accountName: String, completion: @escaping (_ data: AccountAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**AccountAPIResponse**](AccountAPIResponse.md)
 
 ### Authorization
 
@@ -169,7 +169,7 @@ Name | Type | Description  | Notes
 
 # **deployContract**
 ```swift
-    open class func deployContract(authorization: String, accountName: String, deployInput: DeployInput, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func deployContract(authorization: String, accountName: String, deployInput: DeployInput, completion: @escaping (_ data: TransactionAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -205,7 +205,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**TransactionAPIResponse**](TransactionAPIResponse.md)
 
 ### Authorization
 
@@ -220,7 +220,7 @@ Name | Type | Description  | Notes
 
 # **getAccount**
 ```swift
-    open class func getAccount(authorization: String, accountName: String, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func getAccount(authorization: String, accountName: String, completion: @escaping (_ data: AccountAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -254,7 +254,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**AccountAPIResponse**](AccountAPIResponse.md)
 
 ### Authorization
 
@@ -269,7 +269,7 @@ Name | Type | Description  | Notes
 
 # **getBalance**
 ```swift
-    open class func getBalance(accountName: String, authorization: String, chainId: String, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func getBalance(accountName: String, authorization: String, chainId: String, completion: @escaping (_ data: BalanceAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -305,7 +305,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**BalanceAPIResponse**](BalanceAPIResponse.md)
 
 ### Authorization
 
@@ -320,7 +320,7 @@ Name | Type | Description  | Notes
 
 # **getNonce**
 ```swift
-    open class func getNonce(accountName: String, authorization: String, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func getNonce(accountName: String, authorization: String, completion: @escaping (_ data: NonceAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -354,7 +354,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**NonceAPIResponse**](NonceAPIResponse.md)
 
 ### Authorization
 
@@ -369,7 +369,7 @@ Name | Type | Description  | Notes
 
 # **listAccounts**
 ```swift
-    open class func listAccounts(authorization: String, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func listAccounts(authorization: String, completion: @escaping (_ data: AccountAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -401,7 +401,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**AccountAPIResponse**](AccountAPIResponse.md)
 
 ### Authorization
 
@@ -416,7 +416,7 @@ Name | Type | Description  | Notes
 
 # **signMessage**
 ```swift
-    open class func signMessage(accountName: String, authorization: String, signMessage: SignMessage, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func signMessage(accountName: String, authorization: String, signMessage: SignMessage, completion: @escaping (_ data: SignMessageAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -452,7 +452,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**SignMessageAPIResponse**](SignMessageAPIResponse.md)
 
 ### Authorization
 
@@ -467,7 +467,7 @@ Name | Type | Description  | Notes
 
 # **signTransaction**
 ```swift
-    open class func signTransaction(accountName: String, authorization: String, inputBody: InputBody, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func signTransaction(accountName: String, authorization: String, inputBody: InputBody, completion: @escaping (_ data: TransactionAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -503,7 +503,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**TransactionAPIResponse**](TransactionAPIResponse.md)
 
 ### Authorization
 
@@ -518,7 +518,7 @@ Name | Type | Description  | Notes
 
 # **signTypedData**
 ```swift
-    open class func signTypedData(accountName: String, authorization: String, signTypedData: SignTypedData, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func signTypedData(accountName: String, authorization: String, signTypedData: SignTypedData, completion: @escaping (_ data: SignMessageAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -554,7 +554,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**SignMessageAPIResponse**](SignMessageAPIResponse.md)
 
 ### Authorization
 
@@ -569,7 +569,7 @@ Name | Type | Description  | Notes
 
 # **transferEth**
 ```swift
-    open class func transferEth(accountName: String, authorization: String, inputBody: InputBody, completion: @escaping (_ data: AccountControllerResponse?, _ error: Error?) -> Void)
+    open class func transferEth(accountName: String, authorization: String, inputBody: InputBody, completion: @escaping (_ data: TransactionAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -605,7 +605,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountControllerResponse**](AccountControllerResponse.md)
+[**TransactionAPIResponse**](TransactionAPIResponse.md)
 
 ### Authorization
 
