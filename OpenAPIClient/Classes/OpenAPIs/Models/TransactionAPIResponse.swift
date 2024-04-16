@@ -14,17 +14,29 @@ public struct TransactionAPIResponse: Codable, JSONEncodable, Hashable {
 
     public var success: Bool
     public var message: String
+    public var body: InputBody?
+    public var address: String?
+    public var transactionHash: AnyCodable?
+    public var signedTx: AnyCodable?
     public var data: Transaction?
 
-    public init(success: Bool, message: String, data: Transaction? = nil) {
+    public init(success: Bool, message: String, body: InputBody? = nil, address: String? = nil, transactionHash: AnyCodable? = nil, signedTx: AnyCodable? = nil, data: Transaction? = nil) {
         self.success = success
         self.message = message
+        self.body = body
+        self.address = address
+        self.transactionHash = transactionHash
+        self.signedTx = signedTx
         self.data = data
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case success
         case message
+        case body
+        case address
+        case transactionHash = "transaction_hash"
+        case signedTx
         case data
     }
 
@@ -34,6 +46,10 @@ public struct TransactionAPIResponse: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(success, forKey: .success)
         try container.encode(message, forKey: .message)
+        try container.encodeIfPresent(body, forKey: .body)
+        try container.encodeIfPresent(address, forKey: .address)
+        try container.encodeIfPresent(transactionHash, forKey: .transactionHash)
+        try container.encodeIfPresent(signedTx, forKey: .signedTx)
         try container.encodeIfPresent(data, forKey: .data)
     }
 }

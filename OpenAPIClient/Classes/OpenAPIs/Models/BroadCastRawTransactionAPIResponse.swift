@@ -14,17 +14,23 @@ public struct BroadCastRawTransactionAPIResponse: Codable, JSONEncodable, Hashab
 
     public var success: Bool
     public var message: String
+    public var body: InputBody?
+    public var address: String?
     public var data: BroadCastRawTransactionResponse?
 
-    public init(success: Bool, message: String, data: BroadCastRawTransactionResponse? = nil) {
+    public init(success: Bool, message: String, body: InputBody? = nil, address: String? = nil, data: BroadCastRawTransactionResponse? = nil) {
         self.success = success
         self.message = message
+        self.body = body
+        self.address = address
         self.data = data
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case success
         case message
+        case body
+        case address
         case data
     }
 
@@ -34,6 +40,8 @@ public struct BroadCastRawTransactionAPIResponse: Codable, JSONEncodable, Hashab
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(success, forKey: .success)
         try container.encode(message, forKey: .message)
+        try container.encodeIfPresent(body, forKey: .body)
+        try container.encodeIfPresent(address, forKey: .address)
         try container.encodeIfPresent(data, forKey: .data)
     }
 }

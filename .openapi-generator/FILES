@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .swiftformat
 Cartfile
 OpenAPIClient.podspec
@@ -17,7 +16,6 @@ OpenAPIClient/Classes/OpenAPIs/APIs/ENSAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/ERC1155API.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/EosAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/Erc20API.swift
-OpenAPIClient/Classes/OpenAPIs/APIs/Erc4337API.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/Erc721API.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/LitecoinAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/OneinchAPI.swift
@@ -190,7 +188,6 @@ docs/EosTransactionInput.md
 docs/EosTransactionOutput.md
 docs/Erc1155Request.md
 docs/Erc20API.md
-docs/Erc4337API.md
 docs/Erc721API.md
 docs/Erc721Request.md
 docs/FiatCurrency.md
